@@ -23,23 +23,30 @@ in a survey.
 ## Releases
 
 ### Release 0: Design
-Spend a solid design period with your team developing your design and team approach.  
- 
+
+Spend a solid design period with your team developing your design and team
+approach.
+
 #### Wireframes
 
-Create a solid set of wireframes of the pages/ states of pages of your application.  Use a tool like [Balsamiq][balsamiq] or sketch them on paper.
+Create a solid set of wireframes of the pages/ states of pages of your
+application.  Use a tool like [Balsamiq][Balsamiq] or sketch them on paper.
 
-Discuss what your core pages are and what your core user flows are.  There should be two core flows: survey creation and survey
-completion.
+Discuss what your core pages are and what your core user flows are.  There
+should be two core flows: survey creation and survey completion.
 
 #### User Stories
-Create a solid set of user stories for your application.  Use your wireframes to guide stories (ie what happens when a user clicks here?).
 
-You have two types of users in this application, survey creators and survey takers; build stories for both.
+Create a solid set of user stories for your application.  Use your wireframes
+to guide stories (ie what happens when a user clicks here?).
 
-List your user stories in Trello.  
+You have two types of users in this application, survey creators and survey
+takers; build stories for both.
+
+List your user stories in Trello.
 
 #### MVP
+
 Decide what your MVP will be.  Make sure you have wireframes and user stories for all parts of your MVP.
 
 Create a repository for your project. In your repository README include
@@ -50,7 +57,7 @@ Create a repository for your project. In your repository README include
   * A brief description of your team dynamic and git workflow.
 
 
-###Release 1 : Models
+### Release 1 : Models
 
 This schema will be fairly complex
 and it will help to think in terms of survey-creators versus survey-voters. (You may want to refer back to the polling challenges)
@@ -69,11 +76,11 @@ Each of these should correspond to a single table in your database and a single 
 
 Users need to be signed in to create a survey and vote in a survey.
 
-Make sure your models support all of your user stories. 
+Make sure your models support all of your user stories.
 
 ### Release 2: Survey Creation
 
-Users will want to create their surveys in "one go" by adding multiple
+Users will want to create their surveys "in one go" by adding multiple
 questions and choices per question on a single page.  This is an opportunity to
 create some fun dynamic forms.  Check these out:
 
@@ -81,21 +88,61 @@ create some fun dynamic forms.  Check these out:
 * [Dynamically Add Input Fields To Form Using jQuery][]
 * Google "jquery dynamic form fields" to find more
 
-
-To start and for your own sanity, maybe limit each survey to a single question.
-Create a version with a single question per survey working first and add
-support for multiple questions later.
+To start, and for your own sanity, consider limiting each survey to a single
+question.  Create a version with a single question per survey working first and
+add support for multiple questions later.
 
 Surveys should also have an optional image associated with them.
 [CarrierWave][CarrierWave] is your friend; you'll come to love it with time.
 
-### Release 3: Survey Taking
+### Release 3: Add Testing
+
+This is a large application and is possibly the first application whose
+complexity will wallop you into stasis mid-stream.  Testing is your friend and
+will help you make sure you and  your team-mates all have the same expectations
+and that code you wrote a few hours ago is still reliable.
+
+You should implement controller tests in [RSpec][] that exercise many of
+the primary actions associated with your application.  Can you `POST` the right
+data to the right controller and create a new `Survey`.  Can you `GET` to a
+certain URL and view a certain `Survey`?   Perhaps you want some assurance that
+when you `GET` a certain `User` you can see all of his/her votes, all of
+his/her votes for a given survey?
+
+Controller tests are particularly important as you start making use of AJAX.
+It will not be as obvious when things break (no redirect, no big screen of
+stack trace) therefore having controller tests in place to back you up is
+important.
+
+As you work hard to keep application logic in models and not in controllers,
+you might want to add **unit** tests for the new methods / capabilities that
+you are adding on these models.
+
+Remember:  Testing in like [gauze][], you keep adding layers and layers of it
+and, in aggregate, it can be a *very* effective means of care.
+
+Below find some resources to get you started.  Most guides on using RSpec for
+controller testing assume you're running Rails (which you're not, quite yet
+;)), you're going to have to read between the lines to find out which tips and
+examples port correctly into your application.  You won't be able to be a
+[copy-and-paste ninja][] and expect things to work, you're going to have to
+analyze, hypothesize, test, and interpret.
+
+* [Testing with Sinatra and Rack][]
+* [RSpec Guide on Controller Testing][]
+* [Testing Rspec Controllers][]: *Look in the "Testing $METHOD_TYPE Methods" section*
+* [Handy Gist][]: *Sinatra Gist*
+
+We will evaluate your success in this based on which routes you test
+(controller tests) and which interfaces (unit tests) you test.
+
+### Release 4: Survey Taking
 
 For now, a user has to answer every question in a survey.  You should be able
 to implement this constraint using a single custom validation on a single
 model.
 
-### Release 4: Survey Results
+### Release 5: Survey Results
 
 Create a nice page that shows the survey creator the results of a survey.  If
 you want to do something fancy, try using [d3.js][].  This is
@@ -107,7 +154,7 @@ At the very least, create some simple HTML bar charts by having
 percentage-width divs with a fixed height and solid background color so that we
 can see how people responded for each question in a particular survey.
 
-### Release 5: Advanced Features
+### Release 6: Advanced Features
 
 If you're looking for more advanced features, how about something that lets a
 user view a survey without logging in but pops up a [modal dialog][] to prompt
@@ -139,3 +186,10 @@ How about multiple question types?
 [Flot]: http://www.flotcharts.org/
 [Highcharts]: http://www.highcharts.com/
 [modal dialog]: http://www.ericmmartin.com/projects/simplemodal/
+[copy-and-paste ninja]: http://sourcemaking.com/antipatterns/cut-and-paste-programming
+[Testing Rspec Controllers]: http://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
+[RSpec Guide on Controller Testing]: https://www.relishapp.com/rspec/rspec-rails/docs/controller-specs
+[gauze]: http://www.ehow.com/how_5128414_apply-dressing-wound.html
+[controller test in Rails]: http://railscasts.com/episodes/71-testing-controllers-with-rspec
+[Testing with Sinatra and Rack]: http://www.sinatrarb.com/testing.html
+[Handy Gist]: https://gist.github.com/mikeebert/2960172
