@@ -1,6 +1,6 @@
 get '/survey/:token' do
   @survey = Survey.find_by_token(params[:token])
-  erb :survey
+  erb :view_survey
 end
 
 post '/submit_survey/:survey_id' do
@@ -8,5 +8,10 @@ post '/submit_survey/:survey_id' do
   params[:response].each do |answer|
     Answer.create(response: answer[1], question_id: answer[0] )
   end
-  redirect "/survey/#{@survey.token}"
+
+  "Successfully submitted the survey. Thank you for your time."
+
+  #redirect "/survey/#{@survey.token}"
 end
+
+  #require 'pry'; binding.pry

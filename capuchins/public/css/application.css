@@ -11,6 +11,11 @@
   font-size: 30px;
 }
 
+.response_space{
+  background-color:#FBF8FB;
+  color: #1F001F;
+}
+
 th {
   text-align: left;
 }
