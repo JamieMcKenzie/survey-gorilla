@@ -4,5 +4,6 @@ class CreateSurveys < ActiveRecord::Migration
       t.string :title, null: false
       t.string :token
       t.timestamps
+    end
   end
 end
