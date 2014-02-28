@@ -1,4 +1,25 @@
-# Survey Gorilla
+# Team McTophers Survey Gorilla
+Team McTophers
+
+![mctophers](http://www.bonappetit.com/wp-content/uploads/2013/04/mutant-burger-2-646.gif)
+
+## MVP
+User login
+Create-Form
+Complete-Form
+Trello
+
+## Stretch
+Ajaxify user taking form
+Display total survey data
+Display graphs
+
+## Trello
+[link](https://trello.com/b/AjdsokOF/mctophers)
+
+![Imgur](http://i.imgur.com/vXw7a77.png?)
+
+
 
 ## Learning Competencies
 
