@@ -1,13 +1,13 @@
 FactoryGirl.define do
   factory :user do
-    username: "admin"
-    password: "password"
-    email: "email@gmail.com"
+    username "admin"
+    password "password"
+    email "email@gmail.com"
   end
 
   factory :form do
-    title: "first title"
-    url: "suttin"
+    title "first title"
+    url "suttin"
     user
   end
 
@@ -17,12 +17,12 @@ FactoryGirl.define do
   end
 
   factory :question do
-    question: "the answer is red"
+    question "the answer is red"
     form
   end
 
   factory :option do
-    answer: "red"
+    answer "red"
     question
   end
 end
