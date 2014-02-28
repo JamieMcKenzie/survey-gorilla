@@ -1,4 +1,8 @@
-BANDNAMES = [ "Joy Division", "New Order", "The Smiths", "The Sisters of Mercy", "Wye Oak", "Thao and the Get Down Stay Down",
-          "Siouxsie and the Banshees", "Interpol" ]
+survey1 = Survey.create(title: "test survey")
+q1 = Question.create(survey_id: survey1.id, text: "What's your name?")
+q2 = Question.create(survey_id: survey1.id, text: "What's your favorite color?")
+q3 = Question.create(survey_id: survey1.id, text: "What's your favorite city?")
+q4 = Question.create(survey_id: survey1.id, text: "What's your favorite drink?")
+q5 = Question.create(survey_id: survey1.id, text: "What's your favorite season?")
 
-BANDNAMES.each{ |band_name| Band.create(name: band_name) }
+
