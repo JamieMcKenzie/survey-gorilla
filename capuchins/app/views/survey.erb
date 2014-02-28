@@ -1,9 +1,0 @@
-<div class="container">
-  <form action="/url_here" method="post">
-    <%@survey.questions.each do |question|%>
-      <h4 id=<%=question.id%>><%=question.text%></h4>
-      <textarea cols="40" rows="5" name="content"></textarea><br><br>
-    <%end%>
-    <input type="submit" value="Submit">
-  </form>
-</div>
