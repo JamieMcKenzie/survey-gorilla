@@ -4,7 +4,7 @@ $(document).ready(function() {
   // when we try to bind to them
 
   $('.add_question').click(function(e){
-        var newQuestion = '<label for="question">Question:</label><input type="text" name="question" id="question" class="question">'
+        var newQuestion = '<label for="question">Question:</label><input type="text" name="questions[]" id="question" class="question">'
         $(newQuestion).insertAfter('.add_question');
       });
 
