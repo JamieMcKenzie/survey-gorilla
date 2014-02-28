@@ -1,7 +1,28 @@
 FactoryGirl.define do
   factory :user do
-    first_name "John"
-    last_name  "Doe"
-    admin false
+    username: "admin"
+    password: "password"
+    email: "email@gmail.com"
+  end
+
+  factory :form do
+    title: "first title"
+    url: "suttin"
+    user
+  end
+
+  factory :entry do
+    user
+    option
+  end
+
+  factory :question do
+    question: "the answer is red"
+    form
+  end
+
+  factory :option do
+    answer: "red"
+    question
   end
 end
