@@ -3,6 +3,20 @@ get '/survey/:token' do
   erb :survey
 end
 
-post '/' do
-
+post '/submit_survey/:survey_id' do
+  p params
+  @survey = Survey.find_by_id(params[:survey_id])
+  @survey.questions.each do |question|
+    Answer.create(response: params[:response[]], question_id: question.id )
+  end
+  redirect "/survey/#{@survey.token}"
 end
+
+
+
+# name="question[1]"
+# name="question[2]"
+# params[:question] = {
+#   1: "fjjsdflkjfd",
+#   2: "ljfdaljdfkls"
+# }
