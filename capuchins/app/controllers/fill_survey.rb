@@ -4,19 +4,9 @@ get '/survey/:token' do
 end
 
 post '/submit_survey/:survey_id' do
-  p params
   @survey = Survey.find_by_id(params[:survey_id])
-  @survey.questions.each do |question|
-    Answer.create(response: params[:response[]], question_id: question.id )
+  params[:response].each do |answer|
+    Answer.create(response: answer[1], question_id: answer[0] )
   end
   redirect "/survey/#{@survey.token}"
 end
-
-
-
-# name="question[1]"
-# name="question[2]"
-# params[:question] = {
-#   1: "fjjsdflkjfd",
-#   2: "ljfdaljdfkls"
-# }
