@@ -1,6 +1,5 @@
-get '/survey/:token' do
-  @survey = Survey.find_by_token(params[:token])
-  erb :view_survey
+get '/surveys/new' do
+  erb :"surveys/new"
 end
 
 post '/submit_survey/:survey_id' do
@@ -17,6 +16,7 @@ post '/surveys' do
     end
   end
   @survey.save
+  return @survey.token
 end
 
 post '/' do
@@ -26,3 +26,7 @@ post '/' do
   #redirect "/survey/#{@survey.token}"
 end
 
+get '/surveys/:token' do
+  @survey = Survey.find_by_token(params[:token])
+  erb :view_survey
+end
