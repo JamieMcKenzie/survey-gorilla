@@ -2,7 +2,8 @@ enable :sessions
 
 post '/users/login' do
   @user = User.find_by_username(params[:username])
-  redirect 'users/#{@user.id}'
+  session[:id] = @user.id
+  redirect "users/#{@user.id}"
 end
 
 post '/users/new' do
@@ -19,9 +20,12 @@ post '/users/new' do
 end
 
 get '/users/:user_id' do
-  unless current_user.id == params[:user_id]
-    redirect '/'
-  end
   @user = User.find(params[:user_id])
+  @surveys = @user.surveys
   erb :"users/show"
+end
+
+delete '/logout' do
+  session.clear
+  redirect '/'
 end

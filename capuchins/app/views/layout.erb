@@ -21,5 +21,13 @@
 
 <body>
   <%= yield %>
+  <div id="logout">
+    <% if logged_in? %>
+      <form action="/logout" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="submit" value="Logout">
+      </form>
+    <% end %>
+  </div>
 </body>
 </html>

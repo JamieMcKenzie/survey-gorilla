@@ -1,5 +1,6 @@
 class Survey < ActiveRecord::Base
   has_many :questions
+  belongs_to :user
   before_create :generate_token
   validates_presence_of :title
   validate :has_at_least_one_question

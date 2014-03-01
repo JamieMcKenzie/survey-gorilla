@@ -2,6 +2,9 @@
 
   <h1>Your Surveys</h1>
   <ul>
+    <% @surveys.each do |survey| %>
+      <li><%=survey.title%></li>
+    <% end %>
   </ul>
 
   <div class="menu">
