@@ -1,12 +1,16 @@
 <h1><%= @form.title %></h1>
 
-<form action='/entries' method='post'>
+<form action='/entries'  method='post'>
 <% @questions.each.with_index do |question, qindex| %>
   <h3><%= question.question %></h3>
-  <% question.options.each.with_index(1) do |option, oindex| %>
-  <input type="radio" name="option<%= 2*qindex+oindex %>"><%= option.answer %></input>
+  <% question.options.each do |option| %>
+  <input type="radio" value="<%= option.id %>" name="option<%= qindex %>"><%= option.answer %></input>
+  <input type="hidden" name="form_id" value="<%= @form.id %>"/>
   <% end %>
+
+
+
 <% end %>
 <br>
-  <input type="button" value="submit"/>
+  <input type="submit" value="Submit"/>
 </form>

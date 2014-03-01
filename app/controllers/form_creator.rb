@@ -3,7 +3,6 @@ get '/' do
 end
 
 get '/forms/new' do
-
   erb :new_form
 end
 
@@ -27,8 +26,13 @@ get '/forms/:id' do
  @form = Form.find(params[:id])
  @questions = @form.questions
  @options = @form.questions.map(&:options)
- p @options
 
  erb :show_form
+end
+
+get '/forms/:form_id/results/:user_id' do
+  @entries = Entry.find_all_by_user_id_and_form_id(params[:user_id],params[:form_id])
+  @questions = Question.find_all_by_form_id(params[:form_id])
+
 end
 
