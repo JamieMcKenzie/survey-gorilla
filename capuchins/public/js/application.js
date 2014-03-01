@@ -1,21 +1,21 @@
 var $Wrapper = {
 
   answerListener: function(){
-    $("form .answer_form").submit (function(e){
+    $("form.answer_form").submit (function(e){
       e.preventDefault();
-      postAnswer();
+      $Wrapper.postAnswer();
     });
   },
 
   postAnswer: function(){
-      var path = $(".answer_form").attr("action"); //later see if can take out
+      var path = $(".answer_form").attr("action");
       var data = $("form").serialize();
       $.ajax({
         type: "POST",
         url: path,
         data: data
       }).success(function(msg){
-        $(".answer_form").prepend("<h1>" + msg + "</h1>");
+        $(".answer_form").replaceWith("<h1>" + msg + "</h1>");
       }).fail(function(){
         $(".header").append("<h1>Submission Failed! Try again!</h1>");
       });
@@ -28,13 +28,14 @@ var $Wrapper = {
         });
   },
   submitForm: function(){
-    $('form .survey').submit(function(e){
+    $('form.survey').submit(function(e){
       e.preventDefault();
       $.ajax({
         type: "POST",
         url: "/surveys",
         data: $('form').serialize()
       }).success(function(resp){
+        console.log(resp)
         $('form').css("display","none");
         $('.url_display').append("Survey Link: <a href='/surveys/"+resp+"'>/surveys/"+resp + "</a>");
       }).fail(function(resp){
@@ -45,10 +46,8 @@ var $Wrapper = {
   }
 }
 
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+$(function() {
+
   $Wrapper.answerListener();
   $Wrapper.addQuestion();
   $Wrapper.submitForm();
