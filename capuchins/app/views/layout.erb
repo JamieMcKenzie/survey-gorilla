@@ -29,5 +29,13 @@
       </form>
     <% end %>
   </div>
+  <div id="user_home">
+    <% if logged_in? %>
+      <% user = User.find(session[:id]) %>
+      <form action = "/users/<%=user.id%>" method="get">
+      <input type="submit" value="User Homepage">
+      </form>
+    <% end %>
+  </div>
 </body>
 </html>
