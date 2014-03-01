@@ -2,7 +2,7 @@ get '/surveys/new' do
   erb :"surveys/new"
 end
 
-post '/submit_survey/:survey_id' do
+post '/surveys/:survey_id/answers' do
   @survey = Survey.find_by_id(params[:survey_id])
   params[:response].each do |answer|
     Answer.create(response: answer[1], question_id: answer[0] )
