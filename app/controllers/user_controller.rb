@@ -22,6 +22,7 @@ get '/users/create' do
 end
 
 get '/users/:id' do
+  redirect '/login' unless logged_in?
   @user = User.find(params[:id])
   erb :show_user
 end
