@@ -17,4 +17,5 @@ class User < ActiveRecord::Base
     hashed_password = BCrypt::Password.new(self.password)
     hashed_password == string
   end
+
 end
