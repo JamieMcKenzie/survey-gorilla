@@ -4,9 +4,6 @@ class User < ActiveRecord::Base
   # validates_format_of :email, with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/
   # validates_format_of :password, with: /^(?=.*\d).{4,10}$/
 
-  has_many :forms
-  has_many :entries
-
   # before_save :encrypt
 
   # def encrypt
