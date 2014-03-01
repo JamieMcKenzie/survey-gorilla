@@ -8,4 +8,19 @@ $(document).ready(function() {
         $(newQuestion).insertAfter('.add_question');
       });
 
+  $('form').submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "/surveys",
+      data: $('form').serialize()
+    }).success(function(resp){
+      $('form').css("display","none");
+      $('.url_display').append(resp);
+    }).fail(function(resp){
+      $('form').css("display","none");
+      $('.url_display').append("Error. No URL!");
+    });
+  });
+
 });
