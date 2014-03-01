@@ -7,6 +7,8 @@ post '/submit_survey/:survey_id' do
   params[:response].each do |answer|
     Answer.create(response: answer[1], question_id: answer[0] )
   end
+
+  "Successfully submitted the survey. Thank you for your time."
 end
 
 post '/surveys' do
@@ -17,13 +19,6 @@ post '/surveys' do
   end
   @survey.save
   return @survey.token
-end
-
-post '/' do
-
-  "Successfully submitted the survey. Thank you for your time."
-
-  #redirect "/survey/#{@survey.token}"
 end
 
 get '/surveys/:token' do
