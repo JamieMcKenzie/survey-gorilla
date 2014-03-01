@@ -3,7 +3,7 @@ var $Wrapper = {
   answerListener: function(){
     $("form.answer_form").submit (function(e){
       e.preventDefault();
-      postAnswer();
+      $Wrapper.postAnswer();
     });
   },
 
@@ -15,7 +15,7 @@ var $Wrapper = {
         url: path,
         data: data
       }).success(function(msg){
-        $(".answer_form").prepend("<h1>" + msg + "</h1>");
+        $(".answer_form").replaceWith("<h1>" + msg + "</h1>");
       }).fail(function(){
         $(".header").append("<h1>Submission Failed! Try again!</h1>");
       });
