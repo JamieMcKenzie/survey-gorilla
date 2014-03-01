@@ -8,12 +8,13 @@ post '/submit_survey/:survey_id' do
   params[:response].each do |answer|
     Answer.create(response: answer[1], question_id: answer[0] )
   end
+end
 
 post '/surveys' do
   @survey = Survey.new(title: params[:title]) do |survey|
     params[:questions].each do |question|
       survey.questions.new(text: question)
-  end
+    end
   end
   @survey.save
 end
