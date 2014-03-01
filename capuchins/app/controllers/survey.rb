@@ -23,5 +23,5 @@ end
 
 get '/surveys/:token' do
   @survey = Survey.find_by_token(params[:token])
-  erb :view_survey
+  erb :"surveys/show"
 end

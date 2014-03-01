@@ -1,7 +1,7 @@
 var $Wrapper = {
 
   answerListener: function(){
-    $("form .answer_form").submit (function(e){
+    $("form.answer_form").submit (function(e){
       e.preventDefault();
       postAnswer();
     });
@@ -28,13 +28,14 @@ var $Wrapper = {
         });
   },
   submitForm: function(){
-    $('form .survey').submit(function(e){
+    $('form.survey').submit(function(e){
       e.preventDefault();
       $.ajax({
         type: "POST",
         url: "/surveys",
         data: $('form').serialize()
       }).success(function(resp){
+        console.log(resp)
         $('form').css("display","none");
         $('.url_display').append("Survey Link: <a href='/surveys/"+resp+"'>/surveys/"+resp + "</a>");
       }).fail(function(resp){
