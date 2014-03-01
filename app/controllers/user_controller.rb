@@ -12,6 +12,15 @@ post '/login' do
   end
 end
 
+post '/logout' do
+  session.clear
+  redirect '/'
+end
+
+get '/users/create' do
+  erb :create_account
+end
+
 get '/users/:id' do
   @user = User.find(params[:id])
   erb :show_user
@@ -22,5 +31,4 @@ post '/users' do
   session[:id] = @user.id
   redirect "/users/#{@user.id}"
 end
-
 
