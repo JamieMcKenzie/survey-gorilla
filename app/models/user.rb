@@ -7,14 +7,14 @@ class User < ActiveRecord::Base
   has_many :forms
   has_many :entries
 
-  # before_save :encrypt
+  before_save :encrypt
 
-  # def encrypt
-  #   self.password = BCrypt::Password.create(self.password)
-  # end
+  def encrypt
+    self.password = BCrypt::Password.create(self.password)
+  end
 
-  # def correct_password?(string)
-  #   hashed_password = BCrypt::Password.new(self.password)
-  #   hashed_password == string
-  # end
+  def correct_password?(string)
+    hashed_password = BCrypt::Password.new(self.password)
+    hashed_password == string
+  end
 end
