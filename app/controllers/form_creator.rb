@@ -7,6 +7,7 @@ get '/forms/new' do
 end
 
 get '/forms' do
+  @forms = Form.all
   erb :index_forms
 end
 
@@ -18,7 +19,7 @@ post '/forms' do
   @option2 = Option.create(answer: params[:option2], question_id: @question1.id)
   @option3 = Option.create(answer: params[:option3], question_id: @question2.id)
   @option4 = Option.create(answer: params[:option4], question_id: @question2.id)
-  redirect "/forms/#{@form.id}"
+  redirect "/forms/#{@form.id}/results/#{session[:id]}"
   # if successful redirect else
 end
 
