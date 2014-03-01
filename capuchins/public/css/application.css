@@ -33,12 +33,13 @@
 form {
   padding-top: 30px;
   float:left;
-  width: 100%;
+  width: 30%;
 }
 
 th {
   text-align: left;
 }
 
-#add_question {
+#new_form {
+
 }
