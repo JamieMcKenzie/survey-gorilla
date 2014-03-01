@@ -16,7 +16,7 @@ $(document).ready(function() {
       data: $('form').serialize()
     }).success(function(resp){
       $('form').css("display","none");
-      $('.url_display').append(resp);
+      $('.url_display').append("<a href='/surveys/"+resp+"'>Survey Link</a>");
     }).fail(function(resp){
       $('form').css("display","none");
       $('.url_display').append("Error. No URL!");
