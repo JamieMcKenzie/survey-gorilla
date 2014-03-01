@@ -1,0 +1,17 @@
+
+<div class="container">
+  <h1>Create Survey</h1>
+
+  <form action="/surveys" method="post">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" required="true">
+    <input type="submit" value="Generate Survey">
+    <input type="button" value="Add Question" class="add_question">
+    <label for="question">Question:</label>
+    <input type="text" name="questions[]" id="question" class="question">
+  </form>
+
+
+  <div id="survey_display">
+  </div>
+</div>

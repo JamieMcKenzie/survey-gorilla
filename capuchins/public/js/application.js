@@ -3,5 +3,9 @@ $(document).ready(function() {
   // This guarantees that any elements we bind to will exist on the page
   // when we try to bind to them
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('.add_question').click(function(e){
+        var newQuestion = '<label for="question">Question:</label><input type="text" name="questions[]" id="question" class="question">'
+        $(newQuestion).insertAfter('.add_question');
+      });
+
 });

@@ -14,8 +14,17 @@
 .response_space{
   background-color:#FBF8FB;
   color: #1F001F;
+  overflow: hidden;
+}
+
+form {
+  float:left;
+  width: 30%;
 }
 
 th {
   text-align: left;
+}
+
+#add_question {
 }
