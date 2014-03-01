@@ -1,0 +1,5 @@
+<% @questions.each.with_index do |question, index| %>
+  <h3><%= question.question %></h3>
+  <p><%= @options[index].answer %></p>
+<% end %>
+
