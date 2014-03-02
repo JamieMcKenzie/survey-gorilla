@@ -3,6 +3,7 @@ get '/' do
 end
 
 get '/forms/new' do
+  redirect '/login' unless logged_in?
   erb :new_form
 end
 
@@ -23,7 +24,6 @@ get '/forms/:form_id/questions/new' do
 end
 
 post "/forms/:form_id/questions" do
-  p params
   @form = Form.find(params[:form_id])
 
   unless params[:question].empty?
@@ -38,7 +38,6 @@ post "/forms/:form_id/questions" do
 end
 
 post "/forms/:form_id/survey" do
-  p params
   @form = Form.find(params[:form_id])
 
   unless params[:question].empty?

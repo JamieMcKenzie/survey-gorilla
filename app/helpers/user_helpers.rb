@@ -4,7 +4,7 @@ helpers do
   end
 
   def auth_user(params)
-    user = User.find_by_username(params[:username])
+    user = User.find_by_email(params[:email])
     if user && user.correct_password?(params[:password])
         session[:id] = user.id
     end
