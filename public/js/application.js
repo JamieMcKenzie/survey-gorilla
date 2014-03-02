@@ -26,6 +26,20 @@ $(document).ready(function() {
     })
   })
 
+  $('.form-container').on('submit', '#finish-form', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: this.attributes.action.nodeValue,
+      data: $('form').serialize(),
+      success: function(response){
+        console.log("We're finishing! I can't stop!")
+        debugger
+        $('.absolute-center-top').html(response)
+      }
+    })
+  })
+
   $('.form-container').on('submit', '#new-question', function(){
     event.preventDefault();
     $.ajax({
