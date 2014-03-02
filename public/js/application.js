@@ -25,6 +25,19 @@ $(document).ready(function() {
       }
     })
   })
+
+  $('.form-container').on('submit', '#new-question', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: this.attributes.action.nodeValue,
+      data: $('form').serialize(),
+      success: function(response){
+        console.log("I sent a question, guys")
+        $('.absolute-center-top').html(response)
+      }
+    })
+  })
 });
 
 

@@ -12,7 +12,7 @@ get '/forms' do
 end
 
 post '/forms' do
-  @form = Form.create(title: params[:title])
+  @form = Form.create(title: params[:title], user_id: session[:id])
   # @question1 = Question.create(question: params[:question1], form_id: @form.id)
   # @question2 = Question.create(question: params[:question2], form_id: @form.id)
   # @option1 = Option.create(answer: params[:option1], question_id: @question1.id)
@@ -30,7 +30,13 @@ get '/forms/:form_id/questions/new' do
 end
 
 post "/forms/:form_id/questions" do
-  p params
+  @form = Form.find(params[:form_id])
+  question = Question.create(question: params[:question], form_id: @form.id, )
+  params[:options].each do |answer|
+    Option.create(answer: answer, question_id: question.id) unless answer.empty?
+  end
+  redirect "/forms/#{@form.id}/questions/new"
+
 end
 
 get '/forms/:id' do
