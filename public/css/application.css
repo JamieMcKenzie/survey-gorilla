@@ -8,3 +8,169 @@
 th {
   text-align: left;
 }
+
+
+body {
+  background-color: #bdc3c7;
+  /*background-image:url('http://alexgurghis.com/themes/vetro/wp-content/uploads/2013/05/bg3.jpg');*/
+  background-repeat: repeat y
+}
+
+#login {
+  padding-top: 50px;
+}
+
+.mctopher {
+  padding-top: 100px;
+  width: 80%;
+}
+.input {
+margin: 20px 0 5px 0;
+border: none;
+text-align: center;
+background-color: #34495e;
+border-radius: 2px;
+height: 50px;
+width: 70%;
+}
+
+
+.btn-type {
+margin: 5px 0 5px 0;
+height: 40px;
+width: 90px;
+background-color: #27ae60;
+border-radius: 3px;
+border: none;
+box-sizing: none;
+}
+
+.absolute-middle {
+  margin: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.absolute-center-top {
+  margin: auto;
+  margin-top: 15%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.absolute-center {
+  margin: auto;
+  position: absolute;
+  top: 50;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+
+/*==========================*/
+        /*Navbar*/
+/*==========================*/
+#navbar{
+  height: 55px;
+  width: 100%;
+  background-color: #27ae60;
+}
+
+ul .home-icon{
+  text-align: left;
+  color: #2c3e50;
+  width: 10%;
+}
+
+li .home-icon{
+  text-align: left;
+}
+
+ul {
+  text-align: right;
+  padding-right: 60px;
+}
+
+li {
+  color: #34495e;
+  list-style: none;
+  display: inline;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 1.3em;
+}
+
+li:hover{
+  background-color: #2980b9;
+}
+
+li a {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+.active {
+  background-color: #ecf0f1;
+}
+/*==========================*/
+        /*Company Info*/
+/*==========================*/
+
+.absolute-center-top h1 {
+
+}
+
+.absolute-center-top h2 {
+}
+
+.absolute-center-top h5 {
+  color: #2c3e50;
+}
+
+
+#company-info {
+  height: 60%;
+  width: 50%;
+  background-color: #ecf0f1;
+  border-radius: 3px;
+}
+
+#company-info div{
+  margin: auto;
+  postition: absolute;
+}
+/*==========================*/
+        /*Click Here*/
+/*==========================*/
+.wustrap {
+  color: #e67e22;
+}
+
+h2 {
+  margin: auto;
+  position: auto;
+  color: #2c3e50;
+  text-align: center;
+  padding-top: 8px;
+}
+
+#click-here {
+  height: 40px;
+  width: 20%;
+  background-color: #ecf0f1;
+  border-radius: 3px;
+}
+
+#click-here:hover {
+  background-color: #bdc3c7;
+}
