@@ -1,11 +1,12 @@
-<div id="login">
+<div id="login-signup">
 
   <h1> Login </h1>
-  <form action="/login" method="post" value="Log In">
-    <input class="input" type="text" name="username" placeholder="User Name"><br>
-    <input class="input" type="password" name="password" placeholder="password"><br>
-    <button class="btn-type" type="submit">Login</button>
+  <form action="/login" method="post">
+    <input class="input" type="email" name="email" placeholder="someone@example.com"/>
+    <input class="input" type="password" required pattern="^(?=.*\d).{4,10}$" name="password" placeholder="password"/>
+    <button type="submit" class="btn-type">Login</button>
   </form>
+
 </div>
 
 
