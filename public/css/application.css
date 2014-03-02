@@ -9,7 +9,9 @@ th {
   text-align: left;
 }
 
-
+nav {
+  display: inline;
+}
 body {
   background-color: #bdc3c7;
   /*background-image:url('http://alexgurghis.com/themes/vetro/wp-content/uploads/2013/05/bg3.jpg');*/
@@ -44,13 +46,6 @@ border-radius: 3px;
 border: none;
 box-sizing: none;
 }
-/*
-.form-button{
-  background-color: blue;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-}*/
 
 .absolute-middle {
   margin: auto;
