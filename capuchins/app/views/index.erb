@@ -1,10 +1,35 @@
 <div class="container">
   <div class="welcome">
-    <h1> WELCOME | BIENVENUE | 歡迎光臨 | BIENVENIDO </h1>
-    <h1>To</h1>
-    <h1>CAPUCHINS</h1>
+    <h2 class="welcome_languages"> WELCOME | BIENVENUE | 歡迎光臨 | BIENVENIDO | أهلا وسهلا | WILLKOMMEN | قارشى ئالمز</h2>
+    <h2>To</h2>
+    <h1>CAPUCHINS SURVEYS</h1>
   </div>
-  <div class="menu">
-    <a href="/surveys/new">Click Here To Create A New Survey</a>
+
+  <div class="login">
+    <h2>Log In</h2>
+    <form class="login_form" action="/users/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required="true">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required="true">
+        <input type="submit" value="Log In">
+    </form>
   </div>
+
+
+
+  <div class="create_account">
+    <h2>Create Account</h2>
+     <form class="create_account_form" action="/users/new" method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required="true">
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required="true">
+        <input type="submit" value="Create Account">
+    </form>
+  </div>
+  <% if @invalid %>
+    <%=@invalid%>
+  <% end %>
+
 </div>
