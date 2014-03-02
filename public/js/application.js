@@ -34,8 +34,7 @@ $(document).ready(function() {
       data: $('form').serialize(),
       success: function(response){
         console.log("We're finishing! I can't stop!")
-        debugger
-        $('.absolute-center-top').html(response)
+        window.location.assign("http://localhost:9393/")
       }
     })
   })

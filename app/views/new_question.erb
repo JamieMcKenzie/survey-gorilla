@@ -9,6 +9,6 @@
   <input type="<%= @form.questions.empty? ? "hidden" : "submit" %>" class="button" name="end-survey" value="Submit Survey">
 </form>
 
-<form id="finish-form" action="/forms/<%= @form.id %>/questions" method="post">
+<form id="finish-form" action="/forms/<%= @form.id %>/survey" method="post">
   <input name="end-survey" type="<%= @form.questions.empty? ? "hidden" : "submit" %>" value="Submit Survey">
 </form>

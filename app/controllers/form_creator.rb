@@ -37,6 +37,21 @@ post "/forms/:form_id/questions" do
   redirect "/forms/#{@form.id}/questions/new"
 end
 
+post "/forms/:form_id/survey" do
+  p params
+  @form = Form.find(params[:form_id])
+
+  unless params[:question].empty?
+  question = Question.create(question: params[:question], form_id: @form.id, )
+    if params[:options]
+      params[:options].each do |answer|
+        Option.create(answer: answer, question_id: question.id) unless answer.empty?
+      end
+    end
+  end
+  redirect "/users/#{session[:id]}"
+end
+
 get '/forms/:form_id/results/:user_id' do
   @entries = Entry.find_all_by_user_id_and_form_id(params[:user_id],params[:form_id])
   @questions = Question.find_all_by_form_id(params[:form_id]).sort_by(&:id)
