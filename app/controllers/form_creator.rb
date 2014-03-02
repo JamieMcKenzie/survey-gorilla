@@ -13,14 +13,24 @@ end
 
 post '/forms' do
   @form = Form.create(title: params[:title])
-  @question1 = Question.create(question: params[:question1], form_id: @form.id)
-  @question2 = Question.create(question: params[:question2], form_id: @form.id)
-  @option1 = Option.create(answer: params[:option1], question_id: @question1.id)
-  @option2 = Option.create(answer: params[:option2], question_id: @question1.id)
-  @option3 = Option.create(answer: params[:option3], question_id: @question2.id)
-  @option4 = Option.create(answer: params[:option4], question_id: @question2.id)
-  redirect "/forms/#{@form.id}/results/#{session[:id]}"
-  # if successful redirect else
+  # @question1 = Question.create(question: params[:question1], form_id: @form.id)
+  # @question2 = Question.create(question: params[:question2], form_id: @form.id)
+  # @option1 = Option.create(answer: params[:option1], question_id: @question1.id)
+  # @option2 = Option.create(answer: params[:option2], question_id: @question1.id)
+  # @option3 = Option.create(answer: params[:option3], question_id: @question2.id)
+  # @option4 = Option.create(answer: params[:option4], question_id: @question2.id)
+  # redirect "/forms/#{@form.id}/results/#{session[:id]}"
+  redirect "/forms/#{@form.id}/questions/new"
+
+end
+
+get '/forms/:form_id/questions/new' do
+  @form = Form.find(params[:form_id])
+  erb :new_question, layout: false # this should have form title and question1
+end
+
+post "/forms/:form_id/questions" do
+  p params
 end
 
 get '/forms/:id' do
