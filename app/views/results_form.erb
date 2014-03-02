@@ -2,21 +2,8 @@
 <!-- 2) get all answer for question 1 -->
 <h1> Results </h1>
 
-<<<<<<< HEAD
 <% @questions.each do |question| %>
   <h2><%= question.question %></h2>
   <% question.options.each do |option| %>
     <h3><%= option.answer %> : <%= @answer_options[option.id] %></h3>
   <% end %>
-=======
-<%  @answer_options.each do |answer_option| %>
-  <p><%= answer_option %></p>
-<% end %>
-
-
-
-<% @questions.each do |question| %>
-  <h2><%= question.question %></h2>
-  <%= question. %>
->>>>>>> 12ad1fc854c366794c1995521673b41f613be795
-<% end %>
