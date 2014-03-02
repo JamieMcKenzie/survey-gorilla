@@ -59,6 +59,16 @@ get '/forms/:form_id/results/:user_id' do
   erb :show_results
 end
 
+get '/forms/:form_id/results' do
+  @entries = Entry.find_all_by_form_id(params[:form_id])
+  @questions = Question.find_all_by_form_id(params[:form_id]).sort_by(&:id)
+  #split options into the questions it is from
+  @options = @entries.map(&:option).sort_by(&:question_id)
+
+  @answer_options = Entry.group(:option_id).count
+ erb :results_form
+end
+
 get '/forms/:id' do
  @form = Form.find(params[:id])
  @questions = @form.questions
