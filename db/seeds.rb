@@ -1,4 +1,4 @@
-user1 = User.create(username: "wu", password: "poop", email: "wu")
+user1 = User.create(username: "wu", password: "Poop1", email: "jpwu03@yahoo.com")
 form1 = Form.create(title: "Team Topher", url: "poop.com", user_id: 1)
 question1 = Question.create(question: "Who would win in a wizard duel", form_id: 1)
 option1 = Option.create(answer: "Topher", question_id: 1)

@@ -17,6 +17,10 @@ post '/logout' do
   redirect '/'
 end
 
+get '/logout' do
+  erb :logout_confirm
+end
+
 get '/users/create' do
   erb :create_account
 end
