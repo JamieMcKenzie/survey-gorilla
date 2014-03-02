@@ -6,7 +6,7 @@
   <button id="add-option">Add Option</button>
 
   <input id="#finish-form" type="submit" class="button" value="Submit Question">
-  <input type="<%= @form.questions.empty? ? "hidden" : "submit" %>" class="button" name="end-survey" value="Submit Survey">
+  <!-- <input type="<%= @form.questions.empty? ? "hidden" : "submit" %>" class="button" name="end-survey" value="Submit Survey"> -->
 </form>
 
 <form id="finish-form" action="/forms/<%= @form.id %>/survey" method="post">

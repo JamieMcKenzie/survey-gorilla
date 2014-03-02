@@ -8,7 +8,6 @@ $(document).ready(function() {
     event.preventDefault();
     //append input field to the doobly.
     $('#add-option').before('<input type="text" name="options[]" placeholder="Option"><br>')
-
   });
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   $('#new-form').on("submit", function(event){
@@ -51,8 +50,20 @@ $(document).ready(function() {
       }
     })
   })
-});
 
+$('.get-new-form').on('click', function(){
+  event.preventDefault();
+  $.ajax({
+    type: "GET",
+    url:"/forms/new",
+    success: function(response){
+      console.log("getting new form in t-minus..")
+      $('.absolute-center-top').html(response)
+    }
+
+  })
+})
+});
 
 
 

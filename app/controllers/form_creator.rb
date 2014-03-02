@@ -4,7 +4,7 @@ end
 
 get '/forms/new' do
   redirect '/login' unless logged_in?
-  erb :new_form
+  erb :new_form, layout: false
 end
 
 get '/forms' do
