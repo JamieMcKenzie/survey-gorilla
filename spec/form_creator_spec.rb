@@ -22,7 +22,6 @@ describe "FormCreator" do
   it "should post the new forms POST 'forms' " do
     expect(post '/forms', attribs).to be_redirect
     follow_redirect!
-    # expect(last_response.body).to include(attribs[:title])
   end
 
   it "increases the form count if successful" do
