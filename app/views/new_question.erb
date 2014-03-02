@@ -4,5 +4,11 @@
   <input type="text" name="question" placeholder="Question"><br>
 
   <button id="add-option">Add Option</button>
-  <input type="submit" class="button" value="Submit Question">
+
+  <input id="#finish-form" type="submit" class="button" value="Submit Question">
+  <input type="<%= @form.questions.empty? ? "hidden" : "submit" %>" class="button" name="end-survey" value="Submit Survey">
+</form>
+
+<form id="finish-form" action="/forms/<%= @form.id %>/survey" method="post">
+  <input name="end-survey" type="<%= @form.questions.empty? ? "hidden" : "submit" %>" value="Submit Survey">
 </form>

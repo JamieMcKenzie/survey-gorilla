@@ -12,14 +12,7 @@ get '/forms' do
 end
 
 post '/forms' do
-  @form = Form.create(title: params[:title])
-  # @question1 = Question.create(question: params[:question1], form_id: @form.id)
-  # @question2 = Question.create(question: params[:question2], form_id: @form.id)
-  # @option1 = Option.create(answer: params[:option1], question_id: @question1.id)
-  # @option2 = Option.create(answer: params[:option2], question_id: @question1.id)
-  # @option3 = Option.create(answer: params[:option3], question_id: @question2.id)
-  # @option4 = Option.create(answer: params[:option4], question_id: @question2.id)
-  # redirect "/forms/#{@form.id}/results/#{session[:id]}"
+  @form = Form.create(title: params[:title], user_id: session[:id])
   redirect "/forms/#{@form.id}/questions/new"
 
 end
@@ -31,14 +24,32 @@ end
 
 post "/forms/:form_id/questions" do
   p params
+  @form = Form.find(params[:form_id])
+
+  unless params[:question].empty?
+  question = Question.create(question: params[:question], form_id: @form.id, )
+    if params[:options]
+      params[:options].each do |answer|
+        Option.create(answer: answer, question_id: question.id) unless answer.empty?
+      end
+    end
+  end
+  redirect "/forms/#{@form.id}/questions/new"
 end
 
-get '/forms/:id' do
- @form = Form.find(params[:id])
- @questions = @form.questions
- @options = @form.questions.map(&:options)
+post "/forms/:form_id/survey" do
+  p params
+  @form = Form.find(params[:form_id])
 
- erb :show_form
+  unless params[:question].empty?
+  question = Question.create(question: params[:question], form_id: @form.id, )
+    if params[:options]
+      params[:options].each do |answer|
+        Option.create(answer: answer, question_id: question.id) unless answer.empty?
+      end
+    end
+  end
+  redirect "/users/#{session[:id]}"
 end
 
 get '/forms/:form_id/results/:user_id' do
@@ -48,3 +59,10 @@ get '/forms/:form_id/results/:user_id' do
   erb :show_results
 end
 
+get '/forms/:id' do
+ @form = Form.find(params[:id])
+ @questions = @form.questions
+ @options = @form.questions.map(&:options)
+
+ erb :show_form
+end
