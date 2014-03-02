@@ -14,12 +14,12 @@ describe "User controller" do
     expect(last_response.body).to include (params[:username])
   end
 
-  pending "Should create a session on successful login"
+  # pending "Should create a session on successful login"
 
   it "should log in a valid user" do
     expect(post '/login', attribs).to be_redirect
   end
 
-  pending "Should not redirect on failed log in"
+  # pending "Should not redirect on failed log in"
 
 end
