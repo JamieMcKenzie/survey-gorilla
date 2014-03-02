@@ -1,8 +1,9 @@
-<div id="signup">
-  <form action="/users" method="post" value="Create Account">
-    User Name: <input type="text" name="username" placeholder="User Name"><br>
-    Email: <input type="email" name="email" placeholder="Email"><br>
-    Password: <input type="password" name="password"><br>
-    <input type="submit" value="Create Account">
+<div id="signup-login">
+  <h1> Signup </h1>
+  <form action="/signup" method="post">
+    <input class="input" type="text" name="username" required pattern="^[\S]*$" placeholder="Username"/>
+    <input class="input" type="email" name="email" placeholder="someone@example.com"/>
+    <input class="input" type="password" required pattern="^(?=.*\d).{4,10}$" name="password" placeholder="password"/><br>
+     <button type="submit"  class="btn-type">Signup</button>
   </form>
 </div>
