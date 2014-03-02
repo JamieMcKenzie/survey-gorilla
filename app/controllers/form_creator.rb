@@ -9,7 +9,7 @@ end
 
 get '/forms' do
   @forms = Form.all
-  erb :index_forms
+  erb :index_forms, layout: false
 end
 
 post '/forms' do

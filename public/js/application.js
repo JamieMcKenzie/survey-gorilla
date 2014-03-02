@@ -51,18 +51,31 @@ $(document).ready(function() {
     })
   })
 
-$('.get-new-form').on('click', function(){
-  event.preventDefault();
-  $.ajax({
-    type: "GET",
-    url:"/forms/new",
-    success: function(response){
-      console.log("getting new form in t-minus..")
-      $('.absolute-center-top').html(response)
-    }
+  $('.form-container').on('click', '.get-new-form', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url:"/forms/new",
+      success: function(response){
+        console.log("getting new form in t-minus..")
+        $('.absolute-center-top').html(response)
+      }
 
+    })
   })
-})
+
+$('#survey-link').on('click', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url:"/forms",
+      success: function(response){
+        console.log("getting new form in t-minus..")
+        $('.absolute-center-top').html(response)
+      }
+    })
+  })
+
 });
 
 
