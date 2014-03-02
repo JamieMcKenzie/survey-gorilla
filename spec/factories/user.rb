@@ -12,6 +12,7 @@ FactoryGirl.define do
   end
 
   factory :entry do
+    form
     user
     option
   end

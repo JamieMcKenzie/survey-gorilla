@@ -25,6 +25,32 @@ $(document).ready(function() {
       }
     })
   })
+
+  $('.form-container').on('submit', '#finish-form', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: this.attributes.action.nodeValue,
+      data: $('form').serialize(),
+      success: function(response){
+        console.log("We're finishing! I can't stop!")
+        window.location.assign("http://localhost:9393/")
+      }
+    })
+  })
+
+  $('.form-container').on('submit', '#new-question', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: this.attributes.action.nodeValue,
+      data: $('form').serialize(),
+      success: function(response){
+        console.log("I sent a question, guys")
+        $('.absolute-center-top').html(response)
+      }
+    })
+  })
 });
 
 
