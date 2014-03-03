@@ -1,128 +1,35 @@
 $(document).ready(function() {
-  $('.form-container').on('click', '#add-option', function(event){
-    console.log("HELLO?")
-    event.preventDefault();
-    $('#add-option').before('<input type="text" class="input" name="options[]" placeholder="Option"><br>')
-  });
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-  $('.form-container').on("submit", "#new-form", function(event){
-    event.preventDefault()
-    $.ajax({
-      type: "POST",
-      url: "/forms",
-      data:$('form').serialize(),
-      success: function(response){
-        $('.absolute-center-top').html(response)
-        console.log("success")
-      }
-    })
-  })
-
-  $('.form-container').on('submit', '#finish-form', function(){
-    event.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: Url.formSubmit(this),
-      data: $('form').serialize(),
-      success: function(response){
-        console.log("We're finishing! I can't stop!")
-        window.location.assign("http://localhost:9393/")
-      }
-    })
-  })
-
-  $('.form-container').on('submit', '#new-question', function(){
-    event.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: Url.formSubmit(this),
-      data: $('form').serialize(),
-      success: function(response){
-        console.log("I sent a question, guys")
-        $('.absolute-center-top').html(response)
-      }
-    })
-  })
-
-  $('.form-container').on('click', '.get-new-form', function(){
-    event.preventDefault();
-    $.ajax({
-      type: "GET",
-      url:"/forms/new",
-      success: function(response){
-        console.log("getting new form in t-minus..")
-        $('.absolute-center-top').html(response)
-      }
-
-    })
-  })
-
-  $('#survey-link').on('click', function(){
-    event.preventDefault();
-    $.ajax({
-      type: "GET",
-      url:"/forms",
-      success: function(response){
-        console.log("where all da forms at?")
-        $('.absolute-center-top').html(response)
-      }
-    })
-  })
-
-  $('.form-container').on('click','.show-survey', function(){
-    event.preventDefault();
-    $.ajax({
-      type: "GET",
-      url: Url.aTag(this),
-      success: function(response){
-        console.log("gimme dat survey")
-        $('.absolute-center-top').html(response)
-      }
-    })
-  })
-
-  // submit entries
-  $('.form-container').on('submit', '#submit-answers', function(){
-    event.preventDefault();
-    $.ajax({
-      type: "POST",
-      url: Url.formSubmit(this),
-      data: $('form').serialize(),
-      success: function(response){
-        console.log("those answers really tie the room together")
-        $('.absolute-center-top').html(response)
-      }
-    })
-  })
-
-  //index user surveys
-  $('body').on('click','#user-surveys', function(){
-    event.preventDefault();
-    $.ajax({
-      type: "GET",
-      url: Url.aTag(this),
-      success: function(response){
-        console.log("get ALL the surveys")
-        $('.absolute-center-top').html(response)
-      }
-    })
-  })
-
-  //survey results
-  $('.form-container').on('click','.survey-results', function(){
-    event.preventDefault();
-    $.ajax({
-      type: "GET",
-      url: Url.aTag(this),
-      success: function(response){
-        console.log("dem results")
-        $('.absolute-center-top').html(response)
-      }
-    })
-  })
-
-
+  Bind.initialize()
 });
+
+function ajaxRefresh(response){
+  $('.absolute-center-top').html(response)
+}
+
+var Ajaj = {
+  post: function(uri, toConsole){
+    $.ajax({
+      type: "POST",
+      url: uri,
+      data: $('form').serialize(),
+      success: function(response){
+        ajaxRefresh(response)
+        console.log(toConsole)
+      }
+    })  
+  },
+
+  get: function(uri, toConsole){
+    $.ajax({
+      type: "GET",
+      url: uri,
+      success: function(response){
+        ajaxRefresh(response)
+        console.log(toConsole)
+      }
+    })
+  }
+}
 
 var Url = {
   formSubmit: function(element){
@@ -134,3 +41,89 @@ var Url = {
   }
 }
 
+var Bind = {
+
+  initialize: function(){
+    Bind.surveyLink()
+    Bind.showSurvey()
+    Bind.submitAnswers()
+    Bind.indexUserSurveys()
+    Bind.getNewForm()
+    Bind.newForm()
+    Bind.addOption()
+    Bind.newQuestion()
+    Bind.finishForm()
+    Bind.surveyResults()
+  },
+
+  surveyLink: function(){
+    $('#survey-link').on('click', function(){
+      event.preventDefault();
+      Ajaj.get("/forms","where all da forms at?")
+    })
+  },
+
+  newForm: function(){
+    $('.form-container').on("submit", "#new-form", function(event){
+      event.preventDefault()
+      Ajaj.post("/forms", "success")
+    })
+  },
+
+  showSurvey: function(){
+    $('.form-container').on('click','.show-survey', function(){
+    event.preventDefault();
+      Ajaj.get(Url.aTag(this), "gimme dat survey")
+    })
+  },
+
+  submitAnswers: function(){
+    $('.form-container').on('submit', '#submit-answers', function(){
+      event.preventDefault();
+      Ajaj.post(Url.formSubmit(this),"those answers really tie the room together")
+    })
+  },
+
+  indexUserSurveys: function(){
+    $('body').on('click','#user-surveys', function(){
+      event.preventDefault();
+      Ajaj.get(Url.aTag(this), "get ALL the surveys!")
+    })
+  },
+
+  getNewForm: function(){
+    $('.form-container').on('click', '.get-new-form', function(){
+      event.preventDefault();
+      Ajaj.get("/forms/new","getting new form in t-minus..")
+    })
+  }, 
+
+  addOption: function(){
+    $('.form-container').on('click', '#add-option', function(event){
+      event.preventDefault();
+      $('#add-option').before('<input type="text" class="input" name="options[]" placeholder="Option"><br>')
+      console.log("HELLO?")
+    });
+  },
+
+  newQuestion: function(){
+    $('.form-container').on('submit', '#new-question', function(){
+      event.preventDefault();
+      Ajaj.post(Url.formSubmit(this),"I sent a question, guys")
+    })
+  },
+
+  finishForm: function(){
+    $('.form-container').on('submit', '#finish-form', function(){
+      event.preventDefault();
+      Ajaj.post(Url.formSubmit(this), "We're finishing! I can't stop!")
+    })
+  },
+
+  surveyResults: function(){
+    $('.form-container').on('click','.survey-results', function(){
+      event.preventDefault();
+      Ajaj.get(Url.aTag(this),"dem results")
+    })
+  }
+}
