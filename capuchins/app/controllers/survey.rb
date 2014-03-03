@@ -24,15 +24,15 @@ post '/surveys/:survey_id/answers' do
 end
 
 post '/surveys' do
-  user = User.find(session[:id])
-  @survey = Survey.new(title: params[:title]) do |survey|
-    params[:questions].each do |question|
-      survey.questions.new(text: question)
-    end
+  @user = User.find(session[:id])
+  @survey = @user.surveys.find_or_create_by(title: params[:title])
+  @survey.questions.new(text: params[:question]) do |question|
+        params[:choices].each do |choice|
+          question.choices.new(choice_text: choice)
+        end
   end
   @survey.save
-  user.surveys << @survey
-  return @survey.token
+  @survey.token
 end
 
 get '/surveys/:token' do

@@ -37,13 +37,6 @@ var $Wrapper = {
       });
     });
   },
-
-  // addQuestion: function(){
-  //   $('.add_question').click(function(e){
-  //         var newQuestion = '<label>Question:<input type="text" name="question" class="question"></label>';
-  //         $(newQuestion).insertAfter('.add_question');
-  //       });
-  // },
   addChoice: function(){
     $('.add_choice').click(function(e){
       var newChoice = '<label>Choice:<input type="text" name="choices[]" class="choice" required="true"></label>';
@@ -73,7 +66,6 @@ var $Wrapper = {
 $(function() {
 
   $Wrapper.answerListener();
-  // $Wrapper.addQuestion();
   $Wrapper.submitQuestion();
   $Wrapper.addChoice();
   $Wrapper.submitForm();
