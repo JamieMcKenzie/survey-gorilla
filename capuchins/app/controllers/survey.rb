@@ -18,7 +18,7 @@ post '/surveys/questions' do
   if params[:id]
     @survey = @user.surveys.find(params[:id])
   else
-    @survey = @user.surveys.create(title: params[:title])
+    @survey = @user.surveys.create(params[:survey])
   end
   @survey.questions.new(text: params[:question]) do |question|
         params[:choices].each do |choice|
@@ -32,7 +32,11 @@ end
 
 post '/surveys' do
   @user = User.find(session[:id])
-  @survey = @user.surveys.find(params[:id])
+  if params[:id]
+    @survey = @user.surveys.find(params[:id])
+  else
+    @survey = @user.surveys.create(params[:survey])
+  end
   @survey.questions.new(text: params[:question]) do |question|
         params[:choices].each do |choice|
           question.choices.new(choice_text: choice)

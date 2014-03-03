@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :choices, through: :answers
   validates :username, uniqueness: true, presence: true
   validates_presence_of :password
-
   include BCrypt
 
   def password
