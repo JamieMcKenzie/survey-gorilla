@@ -21,7 +21,7 @@ var $Wrapper = {
       });
   },
   submitQuestion: function(){
-    $('.submit_question').click(function(e){
+    $('body').on('click','.submit_question',function(e){
       e.preventDefault();
       $.ajax({
         type: "POST",
