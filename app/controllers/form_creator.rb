@@ -4,12 +4,12 @@ end
 
 get '/forms/new' do
   redirect '/login' unless logged_in?
-  erb :new_form
+  erb :new_form, layout: false
 end
 
 get '/forms' do
   @forms = Form.all
-  erb :index_forms
+  erb :index_forms, layout: false
 end
 
 post '/forms' do
@@ -55,7 +55,7 @@ get '/forms/:form_id/results/:user_id' do
   @entries = Entry.find_all_by_user_id_and_form_id(params[:user_id],params[:form_id])
   @questions = Question.find_all_by_form_id(params[:form_id]).sort_by(&:id)
   @options = @entries.map(&:option).sort_by(&:question_id)
-  erb :show_results
+  erb :show_results, layout: false
 end
 
 get '/forms/:form_id/results' do
@@ -73,5 +73,5 @@ get '/forms/:id' do
  @questions = @form.questions
  @options = @form.questions.map(&:options)
 
- erb :show_form
+ erb :show_form, layout: false
 end

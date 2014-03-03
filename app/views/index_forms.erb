@@ -1,3 +1,7 @@
+<form class="get-new-form" action="/forms/new" method="post">
+  <input type="submit" value="Create a new Survey!">
+</form>
+
  <% @forms.each do |form| %>
- <a href="/forms/<%= form.id %>"><%= form.title %></a>
+ <p><a class="show-survey" href="/forms/<%= form.id %>"><%= form.title %></a></p>
 <% end %>
