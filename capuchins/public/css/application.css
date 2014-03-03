@@ -8,7 +8,7 @@
 
 .welcome{
   font-size: 20px;
-  border: 1px dotted black;
+  border: 1px solid #290029;
   padding: 50px;
   margin: 20px;
   text-align: center;
@@ -74,12 +74,12 @@ th {
   float: right; 
   width: 50px;
   /*margin: 10 20 20px 10px;*/
-  padding-right: 50px;
+  padding-right: 110px;
 }
 
 .show_header{
   font-size: 20px;
-  border: 1px dotted black;
+  border: 1px solid #290029;
   padding: 50px;
   margin: 20px;
   text-align: center;
@@ -98,4 +98,10 @@ th {
 
 .list_survey{
   text-align: center;
+  margin-top: 50px;
+}
+
+h1{
+  color: #3D003D;
+  font-size: 65px;
 }
