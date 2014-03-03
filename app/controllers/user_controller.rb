@@ -35,6 +35,6 @@ end
 post '/users' do
   @user = User.create(params)
   session[:id] = @user.id
-  redirect "/users/#{@user.id}"
+  redirect "/"
 end
 
