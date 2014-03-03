@@ -1,14 +1,34 @@
 <div class="container">
-
-  <h1>Your Surveys</h1>
+  <div class="show_header">
+  	<h1><%=@user.username%>'s Surveys</h1>
+  </div>
+  <div class="list_survey">
   <ul>
     <% @surveys.each do |survey| %>
-      <li><a href = "/surveys/<%=survey.token%>"><%=survey.title%></a></li>
+      <a href = "/surveys/<%=survey.token%>"><%=survey.title%></a></li>
     <% end %>
   </ul>
-
+</div>
   <div class="menu">
       <a href="/surveys/new">Click Here To Create A New Survey</a>
   </div>
 
 </div>
+
+  <div class="container">
+  <div id="logout">
+    <% if logged_in? %>
+      <form action="/logout" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="submit" value="Logout">
+      </form>
+    <% end %>
+  </div>
+  <div id="user_home">
+    <% if logged_in? %>
+      <% user = User.find(session[:id]) %>
+      <form action = "/users/<%=user.id%>" method="get">
+      <input type="submit" value="User Homepage">
+      </form>
+    <% end %>
+  </div>

@@ -1,15 +1,36 @@
 <div class="container" id="survey">
-  <div class="header">
+  <div class="show_header">
     <h1><%=@survey.title%></h1>
   </div>
   <form class="answer_form" action="/surveys/<%=@survey.id%>/answers" method="post">
     <%@survey.questions.each do |question|%>
-      <h4 id=<%=question.id%>><%=question.text%></h4>
+      <h3 id=<%=question.id%>><%=question.text%> :</h3>
+      <ul>
       <%question.choices.each do |choice|%>
-        <%=choice.choice_text%><input type="radio" name="choices[]" value="<%=choice.id%>">
+        <li><%=choice.choice_text%><input type="radio" name="choices[]" value="<%=choice.id%>"></li>
         <%end%>
+      </ul>
     <%end%>
+    <br><br>
     <input type="submit" value="Submit">
+  <br><br><br><br>
   </form>
 </div>
 
+  <div class="container">
+  <div id="logout">
+    <% if logged_in? %>
+      <form action="/logout" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="submit" value="Logout">
+      </form>
+    <% end %>
+  </div>
+  <div id="user_home">
+    <% if logged_in? %>
+      <% user = User.find(session[:id]) %>
+      <form action = "/users/<%=user.id%>" method="get">
+      <input type="submit" value="User Homepage">
+      </form>
+    <% end %>
+  </div>
