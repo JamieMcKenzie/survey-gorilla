@@ -28,8 +28,8 @@ var $Wrapper = {
         url: "/surveys/questions",
         data: $('form.survey').serialize()
       }).success(function(resp){
-        $('form.survey').empty();
-        $('form.survey').append('<label>Question:<input type="text" name="question" class="question" required="true"></label><input type="button" value="Add Choice" class="add_choice"><label>Choice:<input type="text" name="choices[]" class="choice" required="true"></label><input type="submit" value="Generate Survey">');
+        var survey = JSON.parse(resp);
+        $('form.survey').replaceWith('<form class="survey"><input type="hidden" name="id" value='+survey.id+'><label>Title: '+survey.title+'</label><input type="button" value="Next Question" class="submit_question"><label>Question:<input type="text" name="question" class="question" required="true"></label><input type="button" value="Add Choice" class="add_choice"><label>Choice:<input type="text" name="choices[]" class="choice" required="true"></label><input type="submit" value="Generate Survey"></form>');
       }).fail(function(resp){
         console.log(resp);
         $('form.survey').css("display","none");
@@ -44,7 +44,7 @@ var $Wrapper = {
     });
   },
   submitForm: function(){
-    $('form.survey').submit(function(e){
+    $('body').on('submit','form.survey',function(e){
       e.preventDefault();
       $.ajax({
         type: "POST",
