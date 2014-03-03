@@ -5,9 +5,9 @@
 
   <form class="survey">
     <input type="hidden">
-    <label>Title: <input type="text" name="title" id="title" required="true"></label><br><br>
-    <label>Question: <input type="text" name="question" class="question" required="true"></label>
-    <input type="button" value="Next Question" class="submit_question"><br><br><br>
+    <label>Title: <br><input type="text" name="title" id="title" required="true"></label><br><br>
+    <label>Question: <br><input type="text" name="question" class="question" required="true"></label>
+    <input type="button" value="Next Question" class="submit_question"><br><br>
       <input type="button" value="Add Choice" class="add_choice"><br>
     <ul >
       <div class="more_choice">
@@ -25,3 +25,21 @@
   <div class="url_display">
   </div>
 </div>
+
+  <div class="container">
+  <div id="logout">
+    <% if logged_in? %>
+      <form action="/logout" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" name="submit" value="Logout">
+      </form>
+    <% end %>
+  </div>
+  <div id="user_home">
+    <% if logged_in? %>
+      <% user = User.find(session[:id]) %>
+      <form action = "/users/<%=user.id%>" method="get">
+      <input type="submit" value="User Homepage">
+      </form>
+    <% end %>
+  </div>
