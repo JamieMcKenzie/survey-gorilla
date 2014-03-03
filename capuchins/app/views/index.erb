@@ -8,11 +8,11 @@
   <div class="login">
     <h2>Log In</h2>
     <form class="login_form" action="/users/login" method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required="true">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required="true">
-        <input type="submit" value="Log In">
+        <label for="username">Username:</label><br>
+        <input type="text" name="username" id="username" required="true"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" id="password" required="true"><br><br>
+        <input type="submit" value="Log In"><br>
     </form>
   </div>
 
@@ -21,11 +21,11 @@
   <div class="create_account">
     <h2>Create Account</h2>
      <form class="create_account_form" action="/users/new" method="post">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required="true">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required="true">
-        <input type="submit" value="Create Account">
+        <label for="username">Username:</label><br>
+        <input type="text" name="username" id="username" required="true"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" name="password" id="password" required="true"><br><br>
+        <input type="submit" value="Create Account"><br>
     </form>
   </div>
   <% if @invalid %>

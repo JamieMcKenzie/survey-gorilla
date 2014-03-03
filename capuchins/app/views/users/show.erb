@@ -1,14 +1,17 @@
 <div class="container">
-
-  <h1>Your Surveys</h1>
+  <div class="show_header">
+  	<h1><%=@user.username%>'s Surveys</h1>
+  </div>
+  <div class="list_survey">
   <ul>
     <% @surveys.each do |survey| %>
-      <li><a href = "/surveys/<%=survey.token%>"><%=survey.title%></a></li>
+      <a href = "/surveys/<%=survey.token%>"><%=survey.title%></a></li>
     <% end %>
   </ul>
-
+</div>
   <div class="menu">
       <a href="/surveys/new">Click Here To Create A New Survey</a>
   </div>
 
 </div>
+

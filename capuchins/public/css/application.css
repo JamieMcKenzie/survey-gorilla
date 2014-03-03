@@ -4,7 +4,6 @@
   padding: 0px 20px 20px 20px;
   font-family: 'Bubbler One', sans-serif;
   margin:0 auto;
-  text-align: center;
 }
 
 .welcome{
@@ -12,12 +11,14 @@
   border: 1px dotted black;
   padding: 50px;
   margin: 20px;
+  text-align: center;
 
 }
 
 .menu {
   padding-top: 50px;
   font-size: 20px;
+  text-align: center;
 }
 
 .header{
@@ -40,6 +41,60 @@ th {
   text-align: left;
 }
 
-#new_form {
+.login {
+  float: left; 
+  width: 100px;
+  margin: 10 20 20 10px;
+  padding-left: 200px;
+}
 
+.create_account{
+  float: right; 
+  width: 100px;
+  margin: 10 20 20px 10px;
+  padding-right: 250px;
+}
+
+.survey{
+  float: center; 
+  width: 100%;
+/*  margin: 10 20 20px 10px;
+  padding-right: 250px;*/
+}
+
+#logout {
+  float: left; 
+  width: 50px;
+  /*margin: 10 20 20 10px;*/
+  padding-left: 50px;
+}
+
+#user_home{
+  float: right; 
+  width: 50px;
+  /*margin: 10 20 20px 10px;*/
+  padding-right: 50px;
+}
+
+.show_header{
+  font-size: 20px;
+  border: 1px dotted black;
+  padding: 50px;
+  margin: 20px;
+  text-align: center;
+}
+
+.survey {
+  float: left;
+  margin-left: 65px;
+  margin-bottom: 100px;
+}
+
+.answer_form{
+  width: 100%;
+  margin-left: 69px;
+}
+
+.list_survey{
+  text-align: center;
 }

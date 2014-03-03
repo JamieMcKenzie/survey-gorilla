@@ -39,8 +39,8 @@ var $Wrapper = {
   },
   addChoice: function(){
     $('.add_choice').click(function(e){
-      var newChoice = '<label>Choice:<input type="text" name="choices[]" class="choice" required="true"></label>';
-      $(newChoice).insertAfter('.add_choice');
+      var newChoice = '<li><label>Choice: <input type="text" name="choices[]" class="choice" required="true"></label></li>';
+      $(newChoice).insertAfter('.more_choice');
     });
   },
   submitForm: function(){
