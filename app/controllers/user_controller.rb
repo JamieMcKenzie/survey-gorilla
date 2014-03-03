@@ -6,7 +6,7 @@ post '/login' do
   auth_user(params)
 
   if logged_in?
-    redirect "/users/#{session[:id]}"
+    redirect "/"
   else
     redirect '/login'
   end
