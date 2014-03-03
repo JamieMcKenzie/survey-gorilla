@@ -11,18 +11,22 @@ post '/surveys/questions' do
   end
   @survey.questions.new(text: params[:question]) do |question|
         params[:choices].each do |choice|
-          question.choices.new(choice_text: choice)
+          question.choices.new(choice_text: choice.strip)
         end
   end
   @survey.save
   @survey.to_json
 end
 
-post '/surveys/:survey_id/answers' do
-  @survey = Survey.find(params[:survey_id])
-  params[:response].each do |answer|
-    Answer.create(response: answer[1], question_id: answer[0] )
+post '/surveys/:id/answers' do
+  @user = User.find(session[:id])
+  @survey = Survey.find(params[:id])
+  params[:choices].each do |choice|
+    @user.choices
   end
+  # params[:response].each do |answer|
+  #   Answer.create(response: answer[1], question_id: answer[0] )
+  # end
 
   "Successfully submitted the survey. Thank you for your time."
 end

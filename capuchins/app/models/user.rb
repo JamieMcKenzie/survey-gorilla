@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :surveys
-  has_many :choices
+  has_many :choices, through: :answers
   validates :username, uniqueness: true, presence: true
   validates_presence_of :password
 
