@@ -29,7 +29,7 @@ get '/users/:id' do
   redirect '/login' unless logged_in?
   @user = User.find(params[:id])
   @user_forms = Form.find_all_by_user_id(params[:id])
-  erb :show_user
+  erb :show_user, layout: false
 end
 
 post '/users' do

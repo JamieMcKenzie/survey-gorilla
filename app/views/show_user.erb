@@ -1,8 +1,8 @@
 <h2>Sir/Madame <%= @user.username.capitalize %></h2>
-<h3> Here are the results for your sureveys: </h3>
+<h3> Here are the results for your surveys: </h3>
 
 <% @user_forms.each do |form| %>
-<p><a href="/forms/<%= form.id %>/results"><%= form.title %></a></p>
+<p><a class="survey-results" href="/forms/<%= form.id %>/results"><%= form.title %></a></p>
 <% end %>
 
 <form class="get-new-form" method = 'get' action = '/forms/new'>

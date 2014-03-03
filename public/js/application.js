@@ -95,6 +95,33 @@ $(document).ready(function() {
     })
   })
 
+  //index user surveys
+  $('body').on('click','#user-surveys', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: Url.aTag(this),
+      success: function(response){
+        console.log("get ALL the surveys")
+        $('.absolute-center-top').html(response)
+      }
+    })
+  })
+
+  //survey results
+  $('.form-container').on('click','.survey-results', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url: Url.aTag(this),
+      success: function(response){
+        console.log("dem results")
+        $('.absolute-center-top').html(response)
+      }
+    })
+  })
+
+
 });
 
 var Url = {
