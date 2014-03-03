@@ -2,6 +2,17 @@ get '/surveys/new' do
   erb :"surveys/new"
 end
 
+post '/surveys/:id/answers' do
+  @user = User.find(session[:id])
+  @survey = Survey.find(params[:id])
+
+  params[:choices].each do |answer|
+    @user.answers.create(choice_id: answer)
+  end
+
+  "Successfully submitted the survey. Thank you for your time."
+end
+
 post '/surveys/questions' do
   @user = User.find(session[:id])
   if params[:id]
@@ -18,18 +29,6 @@ post '/surveys/questions' do
   @survey.to_json
 end
 
-post '/surveys/:id/answers' do
-  @user = User.find(session[:id])
-  @survey = Survey.find(params[:id])
-  params[:choices].each do |choice|
-    @user.choices
-  end
-  # params[:response].each do |answer|
-  #   Answer.create(response: answer[1], question_id: answer[0] )
-  # end
-
-  "Successfully submitted the survey. Thank you for your time."
-end
 
 post '/surveys' do
   @user = User.find(session[:id])

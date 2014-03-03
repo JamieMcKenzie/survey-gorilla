@@ -9,7 +9,7 @@ var $Wrapper = {
 
   postAnswer: function(){
       var path = $(".answer_form").attr("action");
-      var data = $("form").serialize();
+      var data = $("form.answer_form").serialize();
       $.ajax({
         type: "POST",
         url: path,
@@ -38,7 +38,7 @@ var $Wrapper = {
     });
   },
   addChoice: function(){
-    $('.add_choice').click(function(e){
+    $('body').on('click','.add_choice', function(e){
       var newChoice = '<li><label>Choice: <input type="text" name="choices[]" class="choice" required="true"></label></li>';
       $(newChoice).insertAfter('.more_choice');
     });
