@@ -9,7 +9,7 @@ var $Wrapper = {
 
   postAnswer: function(){
       var path = $(".answer_form").attr("action");
-      var data = $("form").serialize();
+      var data = $("form.answer_form").serialize();
       $.ajax({
         type: "POST",
         url: path,
@@ -21,7 +21,7 @@ var $Wrapper = {
       });
   },
   submitQuestion: function(){
-    $('.submit_question').click(function(e){
+    $('body').on('click','.submit_question',function(e){
       e.preventDefault();
       $.ajax({
         type: "POST",
@@ -29,7 +29,7 @@ var $Wrapper = {
         data: $('form.survey').serialize()
       }).success(function(resp){
         var survey = JSON.parse(resp);
-        $('form.survey').replaceWith('<form class="survey"><input type="hidden" name="id" value='+survey.id+'><label>Title: '+survey.title+'</label><input type="button" value="Next Question" class="submit_question"><label>Question:<input type="text" name="question" class="question" required="true"></label><input type="button" value="Add Choice" class="add_choice"><label>Choice:<input type="text" name="choices[]" class="choice" required="true"></label><input type="submit" value="Generate Survey"></form>');
+        $('form.survey').replaceWith('<form class="survey"><input type="hidden" name="id" value='+survey.id+'><label>Title: '+survey.title+'<br></label><br><br><label>Question: <br><input type="text" name="question" class="question" required="true"></label><input type="button" value="Next Question" class="submit_question"><br><br><input type="button" value="Add Choice" class="add_choice"><br><ul><div class="more_choice"><li><label>Choice: <input type="text" name="choices[]" class="choice" required="true"></label></li></div></ul><br><br><input type="submit" value="Generate Survey"></form>');
       }).fail(function(resp){
         console.log(resp);
         $('form.survey').css("display","none");
@@ -38,7 +38,7 @@ var $Wrapper = {
     });
   },
   addChoice: function(){
-    $('.add_choice').click(function(e){
+    $('body').on('click','.add_choice', function(e){
       var newChoice = '<li><label>Choice: <input type="text" name="choices[]" class="choice" required="true"></label></li>';
       $(newChoice).insertAfter('.more_choice');
     });

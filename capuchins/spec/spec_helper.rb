@@ -11,12 +11,22 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'shoulda-matchers'
 require 'rack/test'
 require 'factory_girl'
+require 'database_cleaner'
 
 FactoryGirl.definition_file_paths = %w{./factories ./test/factories ./spec/factories}
 FactoryGirl.find_definitions
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+
+  config.before(:suite) do
+    begin
+      DatabaseCleaner.start
+      FactoryGirl.lint
+    ensure
+      DatabaseCleaner.clean
+    end
+  end
 end
 
 def app
