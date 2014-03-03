@@ -2,6 +2,18 @@ get '/surveys/new' do
   erb :"surveys/new"
 end
 
+post '/surveys/questions' do
+  @user = User.find(session[:id])
+  @survey = @user.surveys.find_or_create_by(title: params[:title])
+  @survey.questions.new(text: params[:question]) do |question|
+        params[:choices].each do |choice|
+          question.choices.new(choice_text: choice)
+        end
+  end
+  @survey.save
+  @survey.to_json
+end
+
 post '/surveys/:survey_id/answers' do
   @survey = Survey.find_by_id(params[:survey_id])
   params[:response].each do |answer|

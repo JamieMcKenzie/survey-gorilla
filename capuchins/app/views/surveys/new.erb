@@ -2,12 +2,12 @@
   <h1>Create Survey</h1>
 
   <form class="survey">
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title" required="true">
+    <label>Title:<input type="text" name="title" id="title" required="true"></label>
+    <input type="button" value="Next Question" class="submit_question">
+    <label>Question:<input type="text" name="question" class="question" required="true"></label>
+    <input type="button" value="Add Choice" class="add_choice">
+    <label>Choice:<input type="text" name="choices[]" class="choice" required="true"></label>
     <input type="submit" value="Generate Survey">
-    <input type="button" value="Add Question" class="add_question">
-    <label for="question">Question:</label>
-    <input type="text" name="questions[]" id="question" class="question" required="true">
   </form>
 
 

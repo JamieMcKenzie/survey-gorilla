@@ -20,38 +20,62 @@ var $Wrapper = {
         $(".header").append("<h1>Submission Failed! Try again!</h1>");
       });
   },
+  submitQuestion: function(){
+    $('.submit_question').click(function(e){
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: "/surveys/questions",
+        data: $('form.survey').serialize()
+      }).success(function(resp){
+        $('form.survey').empty();
+        $('form.survey').append('<label>Question:<input type="text" name="question" class="question" required="true"></label><input type="button" value="Add Choice" class="add_choice"><label>Choice:<input type="text" name="choices[]" class="choice" required="true"></label><input type="submit" value="Generate Survey">');
+      }).fail(function(resp){
+        console.log(resp);
+        $('form.survey').css("display","none");
+        $('.url_display').append("Error. No Question Recorded!");
+      });
+    });
+  },
 
-  addQuestion: function(){
-    $('.add_question').click(function(e){
-          var newQuestion = '<label for="question">Question:</label><input type="text" name="questions[]" id="question" class="question">'
-          $(newQuestion).insertAfter('.add_question');
-        });
+  // addQuestion: function(){
+  //   $('.add_question').click(function(e){
+  //         var newQuestion = '<label>Question:<input type="text" name="question" class="question"></label>';
+  //         $(newQuestion).insertAfter('.add_question');
+  //       });
+  // },
+  addChoice: function(){
+    $('.add_choice').click(function(e){
+      var newChoice = '<label>Choice:<input type="text" name="choices[]" class="choice" required="true"></label>';
+      $(newChoice).insertAfter('.add_choice');
+    });
   },
   submitForm: function(){
     $('form.survey').submit(function(e){
-      console.log(e)
       e.preventDefault();
       $.ajax({
         type: "POST",
         url: "/surveys",
         data: $('form.survey').serialize()
       }).success(function(resp){
-        console.log(resp)
+        console.log(resp);
         $('form').css("display","none");
         $('.url_display').append("Survey Link: <a href='/surveys/"+resp+"'>/surveys/"+resp + "</a>");
       }).fail(function(resp){
-        console.log(resp)
+        console.log(resp);
         $('form').css("display","none");
         $('.url_display').append("Error. No URL!");
       });
     });
   }
-}
+};
 
 $(function() {
 
   $Wrapper.answerListener();
-  $Wrapper.addQuestion();
+  // $Wrapper.addQuestion();
+  $Wrapper.submitQuestion();
+  $Wrapper.addChoice();
   $Wrapper.submitForm();
 });
 
