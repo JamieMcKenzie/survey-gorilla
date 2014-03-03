@@ -73,5 +73,9 @@ get '/forms/:id' do
  @questions = @form.questions
  @options = @form.questions.map(&:options)
 
+ unless Entry.find_by_user_id_and_form_id(session[:id], params[:id]).nil?
+  redirect to("/forms/#{@form.id}/results/#{session[:id]}")
+ end
+
  erb :show_form, layout: false
 end

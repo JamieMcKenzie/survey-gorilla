@@ -75,7 +75,7 @@ $(document).ready(function() {
       type: "GET",
       url: Url.aTag(this),
       success: function(response){
-        console.log("where all da forms at?")
+        console.log("gimme dat survey")
         $('.absolute-center-top').html(response)
       }
     })
