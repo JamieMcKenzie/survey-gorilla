@@ -7,7 +7,7 @@
       <h3 id=<%=question.id%>><%=question.text%> :</h3>
       <ul>
       <%question.choices.each do |choice|%>
-      <li><%=choice.choice_text%><input type="radio" name="choices[]" value="<%=choice.id%>"></li>
+      <li><%=choice.choice_text%><input type="checkbox" name="choices[]" value="<%=choice.id%>"></li>
         <%end%>
       </ul>
     <%end%>
