@@ -3,5 +3,5 @@
 </form>
 
  <% @forms.each do |form| %>
- <p><a href="/forms/<%= form.id %>"><%= form.title %></a></p>
+ <p><a class="show-survey" href="/forms/<%= form.id %>"><%= form.title %></a></p>
 <% end %>

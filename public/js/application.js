@@ -1,12 +1,7 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
   $('.form-container').on('click', '#add-option', function(event){
     console.log("HELLO?")
     event.preventDefault();
-    //append input field to the doobly.
     $('#add-option').before('<input type="text" name="options[]" placeholder="Option"><br>')
   });
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
@@ -17,9 +12,7 @@ $(document).ready(function() {
       url: "/forms",
       data:$('form').serialize(),
       success: function(response){
-
         $('.absolute-center-top').html(response)
-        // debugger;
         console.log("success")
       }
     })
@@ -64,13 +57,25 @@ $(document).ready(function() {
     })
   })
 
-$('#survey-link').on('click', function(){
+  $('#survey-link').on('click', function(){
     event.preventDefault();
     $.ajax({
       type: "GET",
       url:"/forms",
       success: function(response){
-        console.log("getting new form in t-minus..")
+        console.log("where all da forms at?")
+        $('.absolute-center-top').html(response)
+      }
+    })
+  })
+
+  $('.form-container').on('click','.show-survey', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "GET",
+      url:Url.aTag(this),
+      success: function(response){
+        console.log("where all da forms at?")
         $('.absolute-center-top').html(response)
       }
     })
@@ -78,14 +83,13 @@ $('#survey-link').on('click', function(){
 
 });
 
+var Url = {
+  form: function(element){
+    return element.attributes.action.nodeValue
+  },
 
+  aTag: function(element){
+    return element.attributes.href.nodeValue
+  }
+}
 
-// $.ajax({
-//   type:
-//   url:
-//   dataType:
-//   data:
-//   success: function(response){
-
-//   }
-// })

@@ -73,5 +73,5 @@ get '/forms/:id' do
  @questions = @form.questions
  @options = @form.questions.map(&:options)
 
- erb :show_form
+ erb :show_form, layout: false
 end
