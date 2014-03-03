@@ -1,8 +1,24 @@
 .container {
-  margin: 20px auto;
+  margin: 10px auto;
   width: 600px;
-  padding: 0px 20px 20px 20px;
+  padding: 0px 10px 10px 10px;
   border: 1px dotted black;
+}
+
+
+form {
+  margin-top: 10px;
+}
+
+#link-size {
+  font-size: 1.3em;
+}
+
+a {
+  padding-top: 5px;
+  color: #2980b9;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 th {
@@ -23,24 +39,35 @@ body {
 }
 
 .mctopher {
-  padding-top: 100px;
+  padding-top: 40px;
   width: 80%;
 }
+
 .input {
-margin: 20px 0 5px 0;
+margin: 1%;
 border: none;
 text-align: center;
 background-color: #34495e;
+color: #ecf0f1;
 border-radius: 2px;
 height: 50px;
-width: 70%;
+width: 80%;
 }
-
 
 .btn-type {
 margin: 5px 0 5px 0;
 height: 40px;
 width: 90px;
+background-color: #27ae60;
+border-radius: 3px;
+border: none;
+box-sizing: none;
+}
+
+.btn-type-survey {
+margin: 2px 0 2px 0;
+height: 60px;
+width: 110px;
 background-color: #27ae60;
 border-radius: 3px;
 border: none;
@@ -82,7 +109,7 @@ box-sizing: none;
 
 #login-signup {
   height: 60%;
-  width: 50%;
+  width: 80%;
   background-color: #ecf0f1;
   border-radius: 1px;
   text-align: center;
@@ -93,16 +120,6 @@ box-sizing: none;
 #login-signup div{
   margin: auto;
   text-align: center;
-}
-
-.input {
-  margin: 5px 0 5px 0;
-  border: none;
-  text-align: center;
-  background-color: #34495e;
-  border-radius: 2px;
-  height: 50px;
-  width: 280px;
 }
 
 .btn-type {
@@ -127,6 +144,7 @@ ul .home-icon{
   text-align: left;
   color: #2c3e50;
   width: 10%;
+  font-weight: bold;
 }
 
 li .home-icon{
@@ -165,17 +183,9 @@ li a {
         /*Company Info*/
 /*==========================*/
 
-.absolute-center-top h1 {
-
-}
-
-.absolute-center-top h2 {
-}
-
 .absolute-center-top h5 {
   color: #2c3e50;
 }
-
 
 #company-info {
   height: 60%;

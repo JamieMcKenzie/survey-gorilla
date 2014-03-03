@@ -2,7 +2,7 @@ $(document).ready(function() {
   $('.form-container').on('click', '#add-option', function(event){
     console.log("HELLO?")
     event.preventDefault();
-    $('#add-option').before('<input type="text" name="options[]" placeholder="Option"><br>')
+    $('#add-option').before('<input type="text" class="input" name="options[]" placeholder="Option"><br>')
   });
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   $('.form-container').on("submit", "#new-form", function(event){

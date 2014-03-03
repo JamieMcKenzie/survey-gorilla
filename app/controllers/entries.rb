@@ -1,5 +1,4 @@
 post '/entries' do
-  p params
   taker = Entry.find_all_by_user_id_and_form_id(params[:form_id], session[:id])
   if taker.empty?
     params[:option].each_value do |option_id|
