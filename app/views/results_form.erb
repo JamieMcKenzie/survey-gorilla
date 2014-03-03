@@ -2,9 +2,13 @@
 <!-- 2) get all answer for question 1 -->
 <h1> Results </h1>
 
-<% @questions.each do |question| %>
-  <h2><%= question.question %></h2>
-  <% question.options.each do |option| %>
-    <h3><%= option.answer %> : <%= @answer_options[option.id] %></h3>
+<% unless @questions.empty? %>
+  <% @questions.each do |question| %>
+    <h2><%= question.question %></h2>
+    <% question.options.each do |option| %>
+      <h3><%= option.answer %> : <%= @answer_options[option.id] || 0 %></h3>
+    <% end %>
   <% end %>
+<% else %>
+  <p>No one has taken this survey yet.</p>
 <% end %>

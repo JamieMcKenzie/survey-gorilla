@@ -55,7 +55,7 @@ get '/forms/:form_id/results/:user_id' do
   @entries = Entry.find_all_by_user_id_and_form_id(params[:user_id],params[:form_id])
   @questions = Question.find_all_by_form_id(params[:form_id]).sort_by(&:id)
   @options = @entries.map(&:option).sort_by(&:question_id)
-  erb :show_results
+  erb :show_results, layout: false
 end
 
 get '/forms/:form_id/results' do

@@ -1,6 +1,6 @@
 <h1><%= @form.title %></h1>
 
-<form action='/entries'  method='post'>
+<form id="submit-answers" action='/entries'  method='post'>
 <% @questions.each.with_index do |question, qindex| %>
   <h3><%= question.question %></h3>
   <% question.options.each do |option| %>

@@ -5,7 +5,7 @@ $(document).ready(function() {
     $('#add-option').before('<input type="text" name="options[]" placeholder="Option"><br>')
   });
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-  $('#new-form').on("submit", function(event){
+  $('.form-container').on("submit", "#new-form", function(event){
     event.preventDefault()
     $.ajax({
       type: "POST",
@@ -22,7 +22,7 @@ $(document).ready(function() {
     event.preventDefault();
     $.ajax({
       type: "POST",
-      url: this.attributes.action.nodeValue,
+      url: Url.formSubmit(this),
       data: $('form').serialize(),
       success: function(response){
         console.log("We're finishing! I can't stop!")
@@ -35,7 +35,7 @@ $(document).ready(function() {
     event.preventDefault();
     $.ajax({
       type: "POST",
-      url: this.attributes.action.nodeValue,
+      url: Url.formSubmit(this),
       data: $('form').serialize(),
       success: function(response){
         console.log("I sent a question, guys")
@@ -73,9 +73,23 @@ $(document).ready(function() {
     event.preventDefault();
     $.ajax({
       type: "GET",
-      url:Url.aTag(this),
+      url: Url.aTag(this),
       success: function(response){
         console.log("where all da forms at?")
+        $('.absolute-center-top').html(response)
+      }
+    })
+  })
+
+  // submit entries
+  $('.form-container').on('submit', '#submit-answers', function(){
+    event.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: Url.formSubmit(this),
+      data: $('form').serialize(),
+      success: function(response){
+        console.log("those answers really tie the room together")
         $('.absolute-center-top').html(response)
       }
     })
@@ -84,7 +98,7 @@ $(document).ready(function() {
 });
 
 var Url = {
-  form: function(element){
+  formSubmit: function(element){
     return element.attributes.action.nodeValue
   },
 
