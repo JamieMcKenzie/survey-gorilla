@@ -17,6 +17,9 @@ gem 'activerecord'
 gem 'rake'
 
 gem 'shotgun'
+gem 'bcrypt'
+gem 'pry'
+gem 'faker'
 
 group :test do
   gem 'shoulda-matchers'
@@ -25,7 +28,6 @@ group :test do
 end
 
 group :test, :development do
+  gem 'database_cleaner'
   gem 'factory_girl'
-  gem 'faker'
-  gem 'pry'
 end
