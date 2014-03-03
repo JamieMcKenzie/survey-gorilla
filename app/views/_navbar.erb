@@ -1,7 +1,11 @@
 <div id= 'navbar' class='absolute-middle'>
     <ul>
       <li class='home-icon'>McTopher</li>
+      <% if logged_in? %>
+      <li><a id="user-surveys" href="/users/<%= session[:id] %>">Home</a></li>
+      <% else %>
       <li><a href="/">Home</a></li>
+      <% end %>
       <li><a id="survey-link" href="/forms">Surveys</a></li>
       <% if logged_in? %>
         <li><a href="/logout">Logout</a></li>

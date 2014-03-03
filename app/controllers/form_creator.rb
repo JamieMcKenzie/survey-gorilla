@@ -65,7 +65,7 @@ get '/forms/:form_id/results' do
   @options = @entries.map(&:option).sort_by(&:question_id)
 
   @answer_options = Entry.group(:option_id).count
- erb :results_form
+ erb :results_form, layout: false
 end
 
 get '/forms/:id' do
