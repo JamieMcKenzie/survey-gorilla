@@ -1,14 +1,11 @@
 <h2>Create a new question for your Form: <%= @form.title %>!</h2>
 
 <form id="new-question" action="/forms/<%= @form.id %>/questions" method = "post">
-  <input type="text" name="question" placeholder="Question"><br>
-
-  <button id="add-option">Add Option</button>
-
-  <input id="#finish-form" type="submit" class="button" value="Submit Question">
-  <!-- <input type="<%= @form.questions.empty? ? "hidden" : "submit" %>" class="button" name="end-survey" value="Submit Survey"> -->
+  <input class="input" type="text" name="question" placeholder="Question"><br>
+  <button class="btn-type" id="add-option">Add Option</button>
+  <button class="btn-type" id="#finish-form">Submit Question</button>
 </form>
 
 <form id="finish-form" action="/forms/<%= @form.id %>/survey" method="post">
-  <input name="end-survey" type="<%= @form.questions.empty? ? "hidden" : "submit" %>" value="Submit Survey">
+  <input class="btn-type-survey" name="end-survey" type="<%= @form.questions.empty? ? "hidden" : "submit" %>" value="Submit Survey">
 </form>

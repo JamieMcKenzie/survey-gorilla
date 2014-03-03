@@ -1,6 +1,10 @@
-<h1>ALL OF YOUR FORMS, <%= @user.username %></h1>
+<h2>Sir/Madame <%= @user.username.capitalize %></h2>
+<h3> Here are the results for your sureveys: </h3>
 
+<% @user_forms.each do |form| %>
+<p><a href="/forms/<%= form.id %>/results"><%= form.title %></a></p>
+<% end %>
 
-<form method = 'post' action = '/logout'>
-  <input type="submit" value="Log Out">
+<form class="get-new-form" method = 'get' action = '/forms/new'>
+  <button type="submit" class="btn-type-survey">Create Survey</button>
 </form>
