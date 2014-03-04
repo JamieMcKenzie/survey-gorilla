@@ -31,9 +31,4 @@ describe "FormCreator" do
   it "should increase the count of questions by 2" do
     expect{post '/forms/1/questions', attribs.merge(question_attribs)}.to change{Question.count}.by(1)
   end
-
-  #may require capybara
-  # it "should increase the count of questions by 2" do
-  #   expect{post '/forms/1/questions', attribs}.to change{Option.count}.by(4)
-  # end
 end
