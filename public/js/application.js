@@ -208,7 +208,7 @@ Bind.prototype = {
   },
 
   submitBind: function(){
-    $(this.container).on("submit", this.targetDiv, function(event){
+    $(this.container).on("submit", this.targetDiv, function(){
       event.preventDefault()
       Controller.post(Url.formSubmit(this))
     })
@@ -217,7 +217,7 @@ Bind.prototype = {
   //use template??
   addOption: function(){
     var targetDiv = this.targetDiv
-    $(this.container).on('click', targetDiv, function(event){
+    $(this.container).on('click', targetDiv, function(){
       event.preventDefault();
       $(targetDiv).before('<input type="text" class="input" name="options[]" placeholder="Option"><br>')
     });
