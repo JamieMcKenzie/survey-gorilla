@@ -5,6 +5,8 @@
 <p><a class="survey-results" href="/forms/<%= form.id %>/results"><%= form.title %></a></p>
 <% end %>
 
-<form class="get-new-form" method = 'get' action = '/forms/new'>
-  <button type="submit" class="btn-type-survey">Create Survey</button>
-</form>
+<!-- <form class="get-new-form" method= 'get' action= '/forms/new'>
+  <button type="button" class="btn-type-survey">Create Survey</button>
+</form> -->
+
+<a href="/forms/new" class="btn-type-survey get-new-form">Create Survey</a>

@@ -130,12 +130,27 @@
 //   }
 // }
 $(document).ready(function() {
-  indexSurveys = new Bind('#survey-link', "" ,"where all da forms at?")
-  newForm = new Bind('.form-container','#new-form','success')
-  showSurvey = new Bind('.form-container', '.show-survey', "gimme dat survey");
+  var indexSurveys = new Bind('#survey-link')
+  var newForm = new Bind('.form-container','#new-form')
+  var showSurvey = new Bind('.form-container', '.show-survey')
+  var submitAnswers = new Bind('.form-container', '#submit-answers')
+  var indexUserSurveys = new Bind('body', '#user-surveys')
+  var getNewForm = new Bind('.form-container', '.get-new-form')
+  var addOption = new Bind('.form-container', '#add-option')
+  var newQuestion = new Bind('.form-container', '#new-question')
+  var finishForm = new Bind('.form-container', '#finish-form')
+  var surveyResults = new Bind('.form-container','.survey-results')
+
   indexSurveys.linkBind()
   newForm.submitBind()
   showSurvey.linkBind()
+  submitAnswers.submitBind()
+  indexUserSurveys.linkBind()
+  getNewForm.linkBind()
+  addOption.addOption()
+  newQuestion.submitBind()
+  finishForm.submitBind()
+  surveyResults.linkBind()
   // binder.initialize()
 });
 
@@ -144,26 +159,25 @@ View = {
     $('.absolute-center-top').html(response)
   }
 }
+
 Controller = {
-  post: function(uri, toConsole){
+  post: function(uri){
     $.ajax({
       type: "POST",
       url: uri,
       data: $('form').serialize(),
       success: function(response){
         View.update(response)
-        console.log(toConsole)
       }
     })  
   },
 
-  get: function(uri, toConsole){
+  get: function(uri){
     $.ajax({
       type: "GET",
       url: uri,
       success: function(response){
         View.update(response)
-        console.log(toConsole)
       }
     })
   }
@@ -179,78 +193,33 @@ Url = {
   }
 }
 
-function Bind(container, targetDiv,message){
+function Bind(container, targetDiv){
   this.targetDiv = targetDiv
   this.container = container
-  this.message = message
 }
 
 Bind.prototype = {
 
   linkBind: function(){
-    var message = this.message
     $(this.container).on('click', this.targetDiv, function(){
       event.preventDefault();
-      Controller.get(Url.aTag(this),message)
+      Controller.get(Url.aTag(this))
     })
   },
 
   submitBind: function(){
     $(this.container).on("submit", this.targetDiv, function(event){
-      message = this.message
       event.preventDefault()
-      Controller.post(Url.formSubmit(this), message)
+      Controller.post(Url.formSubmit(this))
     })
-  }
-}
-
-//   submitAnswers: function(){
-//     $(this.container).on('submit', '#submit-answers', function(){
-//       event.preventDefault();
-//       Ajaj.post(Url.formSubmit(this),"those answers really tie the room together")
-//     })
-//   },
-
-//   indexUserSurveys: function(){
-//     $('body').on('click','#user-surveys', function(){
-//       event.preventDefault();
-//       Ajaj.get(Url.aTag(this), "get ALL the surveys!")
-//     })
-//   },
-
-//   getNewForm: function(){
-//     $(this.container).on('click', '.get-new-form', function(){
-//       event.preventDefault();
-//       Ajaj.get(Url.aTag(this),"getting new form in t-minus..")
-//     })
-//   }, 
-
-  addOption: function(){
-    $(this.container).on('click', '#add-option', function(event){
-      event.preventDefault();
-      $('#add-option').before('<input type="text" class="input" name="options[]" placeholder="Option"><br>')
-      console.log("HELLO?")
-    });
   },
 
-//   newQuestion: function(){
-//     $(this.container).on('submit', '#new-question', function(){
-//       event.preventDefault();
-//       Ajaj.post(Url.formSubmit(this),"I sent a question, guys")
-//     })
-//   },
-
-//   finishForm: function(){
-//     $(this.container).on('submit', '#finish-form', function(){
-//       event.preventDefault();
-//       Ajaj.post(Url.formSubmit(this), "We're finishing! I can't stop!")
-//     })
-//   },
-
-//   surveyResults: function(){
-//     $(this.container).on('click','.survey-results', function(){
-//       event.preventDefault();
-//       Ajaj.get(Url.aTag(this),"dem results")
-//     })
-//   }
-// }
+  //use template??
+  addOption: function(){
+    var targetDiv = this.targetDiv
+    $(this.container).on('click', targetDiv, function(event){
+      event.preventDefault();
+      $(targetDiv).before('<input type="text" class="input" name="options[]" placeholder="Option"><br>')
+    });
+  }
+}
