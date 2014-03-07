@@ -6,6 +6,10 @@
  <p><a class="show-survey" id="link-size" href="/forms/<%= form.id %>"><%= form.title.capitalize %></a></p>
 <% end %>
 
-<form class="get-new-form" action="/forms/new" method="post">
+<!-- <form id="new-form" action="/forms" method="post">
   <button type="submit" class="btn-type-survey">New Survey</button>
 </form>
+ -->
+
+<a href="/forms/new" class="btn-type-survey get-new-form">Create Survey</a>
+ 

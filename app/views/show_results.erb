@@ -1,3 +1,5 @@
+<h2>Here are your answers to this survey!</h2>
+<h3>Survey Title <%= @questions.first.form.title %></h3>
 <% @questions.each.with_index do |question, index| %>
   <h3><%= question.question %></h3>
   <p><%= @options[index].answer %></p>

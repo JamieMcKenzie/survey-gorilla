@@ -11,12 +11,7 @@ describe "FormCreator" do
   end
 
   it "should go to a new forms page GET '/forms/new'" do
-    expect(get '/forms/new').to be_ok
-  end
-
-  it "should display the proper page" do
-    get '/forms/new'
-    expect(last_response.body).to include("Create a new form bro!")
+    expect(get '/forms/new').to be_redirect
   end
 
   it "should post the new forms POST 'forms' " do
@@ -31,9 +26,4 @@ describe "FormCreator" do
   it "should increase the count of questions by 2" do
     expect{post '/forms/1/questions', attribs.merge(question_attribs)}.to change{Question.count}.by(1)
   end
-
-  #may require capybara
-  # it "should increase the count of questions by 2" do
-  #   expect{post '/forms/1/questions', attribs}.to change{Option.count}.by(4)
-  # end
 end

@@ -21,6 +21,11 @@ a {
   text-decoration: none;
 }
 
+.get-new-form{
+  padding:10px;
+  color:black;
+}
+
 th {
   text-align: left;
 }

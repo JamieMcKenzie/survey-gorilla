@@ -6,7 +6,7 @@ post '/login' do
   auth_user(params)
 
   if logged_in?
-    redirect "/users/#{session[:id]}"
+    redirect "/"
   else
     redirect '/login'
   end
@@ -35,6 +35,6 @@ end
 post '/users' do
   @user = User.create(params)
   session[:id] = @user.id
-  redirect "/users/#{@user.id}"
+  redirect "/"
 end
 

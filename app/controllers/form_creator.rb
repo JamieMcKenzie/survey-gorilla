@@ -20,7 +20,7 @@ end
 
 get '/forms/:form_id/questions/new' do
   @form = Form.find(params[:form_id])
-  erb :new_question, layout: false # this should have form title and question1
+  erb :new_question, layout: false
 end
 
 post "/forms/:form_id/questions" do
@@ -61,7 +61,6 @@ end
 get '/forms/:form_id/results' do
   @entries = Entry.find_all_by_form_id(params[:form_id])
   @questions = Question.find_all_by_form_id(params[:form_id]).sort_by(&:id)
-  #split options into the questions it is from
   @options = @entries.map(&:option).sort_by(&:question_id)
 
   @answer_options = Entry.group(:option_id).count
