@@ -6,6 +6,7 @@ describe 'Survey Controller' do
   let(:survey) { user.surveys.create( FactoryGirl.attributes_for(:survey)) }
   let(:question) { survey.questions.create(FactoryGirl.attributes_for(:question)) }
   let(:choice) { question.choices.create(FactoryGirl.attributes_for(:choice)) }
+  let(:session) { {'rack.session' => {id: user.id}} }
 
   context 'make survey page' do
     it 'should exist' do
@@ -28,11 +29,8 @@ describe 'Survey Controller' do
         question: "sample question",
         choices: ['a','b']
       }
-      session = {
-        'rack.session' => {id: user.id}
-      }
       expect{
-        post('/surveys/questions',params, session)
+        post('/surveys/questions', params, session)
       }.to change(Question, :count).by(1)
     end
   end
@@ -44,10 +42,7 @@ describe 'Survey Controller' do
         question: "sample question",
         choices: ['a','b']
       }
-      session = {
-        'rack.session' => {id: user.id}
-      }
-      post('/surveys',params,session)
+      post('/surveys', params, session)
       expect(last_response.body).to include "#{survey.token}"
     end
   end
@@ -59,11 +54,8 @@ describe 'Survey Controller' do
         question: "sample question",
         choices: [1]
       }
-      session = {
-        'rack.session' => {id: user.id}
-      }
       expect{
-        post("/surveys/#{survey.id}/answers",params, session)
+        post("/surveys/#{survey.id}/answers", params, session)
       }.to change(Answer, :count).by(1)
     end
   end
