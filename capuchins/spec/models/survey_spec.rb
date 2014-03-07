@@ -11,3 +11,11 @@ describe Survey do
 
 
 end
+
+describe Choice do
+
+  context 'validations' do
+    it { should validate_presence_of(:choice_text) }
+  end
+
+end
